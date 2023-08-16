@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.bg-color {
+  background: #1c1c1c;
+}
+.text-light {
+  color: #f8f9fa !important;
+}
+.rounded {
+  border-radius: 8px !important;
+}
+.go_btn {
+  width: 120px;
+  color: lightgreen;
+  border: 1px solid grey;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.go_btn:hover {
+  box-shadow: 0 0 10px #00d3c1 !important;
+}
+.gb_active {
+  color: #00d3c1 !important;
+  box-shadow: 0 0 10px #00d3c1 !important;
+}
+.text-left {
+  text-align: left !important;
+}
+
+.bg-faint {
+  background-color: #2e2e2e !important;
+  color: #ffbd5a !important;
+}
+
+@media (max-width: 768px) {
+  .go_btn {
+    height: 50px !important;
+  }
+  #Top_Bar {
+    width: 99% !important;
+  }
+  .go_btn {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .me-3 {
+    margin-right: 0.25rem !important;
+  }
+
+  .mx-3 {
+    margin-left: 0.25rem !important;
+    margin-right: 0.25rem !important;
+  }
+}
+
+@media (max-width:992px) {
+  .calender_heatmap {
+    padding-right: 0 !important;
+  }
+}
+
+.ch-week-labels {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* ---------------------
+Calender HeatMap Plugin 
+---------------------- */
+
+#heatmap-5 {
+  width: 100%; /* Adjust the width as needed */
+}
+
+.ch-label-weekday,
+.ch-title {
+  color: #fff !important; /* Change to your desired color */
+}
+
+/*
+.ch-week, .ch-day-labels --> Width
+.ch-day --> width and height
+.ch-day-label --> line-height (SAME AS .ch-week, .ch-day-labels WIDTH)
+*/
+
+/* -------------- 
+  Modal Form 
+-----------------*/
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.modal-body tbody {
+  height: auto !important;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="datetime-local"],
+input[type="date"] {
+  background-color: #525252 !important;
+  color: #ffbd5a !important;
+  margin-top: 8px !important;
+}
+
+.modal-body td:first-child {
+  font-weight: 500;
+}
+
+@media (max-width: 440px) {
+  input[type="text"],
+  input[type="number"],
+  input[type="datetime-local"] {
+    width: 155px;
+  }
+}
+
+@media (max-width: 370px) {
+  .modal-body td:first-child {
+    width: 140px !important;
+  }
+  .modal-body {
+    padding-left: 0.5rem !important;
+    padding-right: 0.25rem !important;
+  }
+}
+
+@media (max-width: 340px) {
+  .modal-body td:first-child {
+    width: 110px !important; 
+  }
+
+  .modal-body td {
+    font-size: 12px !important;
+  }
+
+  input[type='radio']:after {
+    width: 15px !important;
+    height: 15px !important;
+    border-radius: 15px;
+    top: -2px !important;
+    left: -1px !important;
+    position: relative;
+    background-color: #2e2e2e;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #ffbd5a;
+  }
+  
+  input[type='radio']:checked:after {
+    width: 15px !important;
+    height: 15px !important;
+    border-radius: 15px;
+    top: -2px !important;
+    left: -1px !important;
+    position: relative;
+    background-color: #ffbd5a;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #ffbd5a;
+  }
+}
+
+input[type='radio']:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -3px;
+  left: -1px;
+  position: relative;
+  background-color: #2e2e2e;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid #ffbd5a;
+}
+
+input[type='radio']:checked:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -3px;
+  left: -1px;
+  position: relative;
+  background-color: #ffbd5a;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid #ffbd5a;
+}
