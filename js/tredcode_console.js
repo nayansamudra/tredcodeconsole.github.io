@@ -59,10 +59,13 @@ $("#heatmap-5-random").on("click", function () {
     console.log(data)
 
     $("#heatmap-5").CalendarHeatmap('updateDates', data);
+
+    resize_function()
 });
 
 $("#heatmap-5-empty").on("click", function () {
     $("#heatmap-5").CalendarHeatmap('updateDates', []);
+    resize_function()
 });
 
 $("#heatmap-5-append").on("click", function () {
@@ -77,6 +80,7 @@ $("#heatmap-5-append").on("click", function () {
         });
     }
     $("#heatmap-5").CalendarHeatmap('appendDates', data);
+    resize_function()
 });
 
 $("#heatmap-5-wkday").on("click", function () {
@@ -86,6 +90,8 @@ $("#heatmap-5-wkday").on("click", function () {
             days: (labels.days === true) ? false : true
         }
     });
+
+    resize_function()
 });
 
 resize_function = () => {
