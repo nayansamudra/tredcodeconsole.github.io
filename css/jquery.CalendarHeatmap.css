@@ -69,10 +69,11 @@
   display: inline-block;
   width: 15px;
   height: 15px;
-  border: 1px solid #ffffff;
-  background-color: #c8d7e1;
+  border: 1px solid rgb(0, 0, 0);
+  background-color: #dcdcdc;
   margin: 0;
   box-sizing: content-box;
+  border-radius: 15%;
 }
 .ch-day.is-outside-month,
 .ch-lvl.is-outside-month,
@@ -87,7 +88,7 @@
 }
 .ch-day.is-after-today,
 .ch-lvl.is-after-today {
-  background-color: #e9eff3;
+  background-color: white;
 }
 .ch-day.lvl-1,
 .ch-lvl.lvl-1 {
