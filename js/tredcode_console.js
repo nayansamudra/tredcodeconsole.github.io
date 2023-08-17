@@ -312,38 +312,94 @@ function getHoliday() {
         if (newDate.getDay() == 0) {   //if Sunday
             events.push({
                 date: newDate,
-                eventName: "Sunday free",
-                className: "badge bg-danger",
+                eventName: "+1520",
+                className: "badge",
                 onclick(e, data) {
                     console.log(data);
                 },
-                dateColor: "red"
-            });
-
-            events.push({
-                date: newDate,
-                eventName: "Sunday holiday",
-                className: "badge bg-info", // You can choose a different class for the second event
-                onclick(e, data) {
-                    console.log(data);
-                },
-                dateColor: "#ffbd5a" // You can choose a different color for the second event
+                dateColor: "#db8400"
             });
         }
+
         if (newDate.getDay() == 6) {   //if Saturday
             events.push({
                 date: newDate,
-                eventName: "Saturday free",
-                className: "badge bg-success",
+                eventName: "-565",
+                className: "badge",
                 onclick(e, data) {
                     console.log(data);
                 },
-                dateColor: "white"
+                dateColor: "#ffbd5a"
             });
         }
+
 
     }
     return events;
 }
 
 getHoliday()
+
+function background_color_one_month_cal() {
+    var tdElements = document.querySelectorAll('td div.gc-event.badge');
+
+    // Loop through each selected <div> element
+    tdElements.forEach(function (divElement) {
+        var tdElement = divElement.parentElement; // Get the parent <td> element
+        var content = parseFloat(divElement.textContent.trim()); // Parse content as a float
+
+        if (!isNaN(content)) {
+            if (content > 0) {
+                tdElement.style.backgroundColor = '#7bdb7b'; // Set background color to green for positive numbers
+            } else if (content < 0) {
+                tdElement.style.backgroundColor = '#fc5c5d'; // Set background color to red for negative numbers
+            }
+        }
+    });
+}
+
+setTimeout(() => {
+    background_color_one_month_cal()
+}, 200);
+
+//-----------------------Modal form-------------------------//
+$('.btn-close').hover(
+    function () {
+        $(this).addClass('bg-white'); // Add class on mouseenter
+    },
+    function () {
+        $(this).removeClass('bg-white'); // Remove class on mouseleave
+    }
+);
+
+$(document).on("click", ".slider", function () {
+    if ($('#checkbox').is(':checked')) {
+        console.log('checked');
+        $('#long_text').css('color', '#6bd368');
+        $('#short_text').css('color', '#6bd368');
+        $('#exampleModal1 .modal-header').css('background-color', '#6bd368')
+        $('#exampleModal1 .modal-footer').css('background-color', '#6bd368')
+    } else {
+        console.log('not checked');
+        $('#long_text').css('color', '#fc5c5d');
+        $('#short_text').css('color', '#fc5c5d');
+        $('#exampleModal1 .modal-header').css('background-color', '#fc5c5d')
+        $('#exampleModal1 .modal-footer').css('background-color', '#fc5c5d')
+    }
+})
+
+//------- character upto 300 only
+var maxChars = 300;
+
+$("textarea").on("input", function () {
+    var $this = $(this);
+    var remainingChars = maxChars - $this.val().length;
+
+    if (remainingChars >= 0) {
+        $this.siblings(".char-count").text(remainingChars + " characters remaining");
+    } else {
+        // Trim the content to the maximum limit
+        $this.val($this.val().substring(0, maxChars));
+        $this.siblings(".char-count").text("0 characters remaining");
+    }
+});

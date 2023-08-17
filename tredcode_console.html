@@ -209,7 +209,7 @@
 
             <!-- 1 month Calendar detail view and All Stats-->
             <div class="row mx-2 mb-2" id="Bottom_Part">
-               <div class="col-lg-4 bg-color rounded" id="one_month_calendar">
+               <div class="col-lg-4 bg-color rounded px-0" id="one_month_calendar">
                   <div id="calendar" style="padding: 0.5rem;"></div>
                </div>
                <div class="ms-2 col-lg bg-color rounded" id="All_stats">
@@ -256,21 +256,21 @@
 
    <!-- Modal - (Add trade inputs) -->
    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog bg-faint">
-         <div class="modal-content bg-color border">
+      <div class="modal-dialog modal-lg">
+         <div class="modal-content bg-color border-0">
             <div class="modal-header border-bottom-0">
                <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Add Trade Inputs:</h1>
-               <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body bg-faint">
                <table>
                   <tr>
                      <td>Trade Type:</td>
                      <td class="d-flex align-items-center">
-                        Long <label class="switch">
-                           <input type="checkbox">
+                        <span style="font-weight: 500; color:#6bd368" id="long_text">Long</span> <label class="switch">
+                           <input type="checkbox" id="checkbox">
                            <span class="slider"></span>
-                        </label> Short
+                        </label> <span style="font-weight: 500; color:#6bd368" id="short_text">Short</span>
                      </td>
                   </tr>
                   <tr>
@@ -304,19 +304,19 @@
                   </tr>
                   <tr>
                      <td>How did you find the trade ?</td>
-                     <td><textarea rows="3" id="Find_Trade" name="Find_Trade"></textarea></td>
+                     <td><textarea rows="3" id="Find_Trade" name="Find_Trade" placeholder="Only upto 300 character" class="placeholder-color"></textarea></td>
                   </tr>
                   <tr>
                      <td>Entry Reason:</td>
-                     <td><textarea rows="3" id="Entry_reason" name="Entry_reason"></textarea></td>
+                     <td><textarea rows="3" id="Entry_reason" name="Entry_reason" placeholder="Only upto 300 character" class="placeholder-color"></textarea></td>
                   </tr>
                   <tr>
                      <td>Exit Reason:</td>
-                     <td><textarea rows="3" id="Exit_reason" name="Exit_reason"></textarea></td>
+                     <td><textarea rows="3" id="Exit_reason" name="Exit_reason" placeholder="Only upto 300 character" class="placeholder-color"></textarea></td>
                   </tr>
                   <tr>
                      <td>Mistakes made / Lessons learned</td>
-                     <td><textarea rows="3" id="Mistakes" name="Mistakes"></textarea></td>
+                     <td><textarea rows="3" id="Mistakes" name="Mistakes" placeholder="Only upto 300 character" class="placeholder-color"></textarea></td>
                   </tr>
                </table>
             </div>
@@ -329,11 +329,11 @@
 
    <!-- Modal - (Select Date Range) -->
    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog bg-faint">
-         <div class="modal-content bg-color border">
+      <div class="modal-dialog modal-lg">
+         <div class="modal-content bg-color border-0">
             <div class="modal-header border-bottom-0">
                <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Select Date Range:</h1>
-               <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body bg-faint">
                <table>
@@ -401,21 +401,25 @@
          $('#add_trade').html('Add <br> Trade')
          $('#bulk_import').html('Bulk <br> Import')
          $('#date_range_selector').html('Date Range <br> Selector')
+         $('.modal-dialog').removeClass('modal-lg')
       } else if ($(window).width() >= 575) {
          $('#add_trade').text('Add Trade')
          $('#bulk_import').text('Bulk Import')
          $('#date_range_selector').text('Date Range Selector')
+         $('.modal-dialog').addClass('modal-lg')
       }
-
+      
       $(window).on("resize", function () {
          if ($(window).width() < 575) {
             $('#add_trade').html('Add <br> Trade')
             $('#bulk_import').html('Bulk <br> Import')
             $('#date_range_selector').html('Date Range <br> Selector')
+            $('.modal-dialog').removeClass('modal-lg')
          } else if ($(window).width() >= 575) {
             $('#add_trade').text('Add Trade')
             $('#bulk_import').text('Bulk Import')
             $('#date_range_selector').text('Date Range Selector')
+            $('.modal-dialog').addClass('modal-lg')
          }
       })
    </script>

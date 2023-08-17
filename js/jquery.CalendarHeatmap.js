@@ -575,7 +575,7 @@
                 }
 
                 // Add the legend steps
-                for (i = 0; i < binLabels.length; i++) {
+                for (i = 0; i <= binLabels.length; i++) {
                     $("<li>", {
                         "class": "ch-lvl lvl-" + i,
                         "title": binLabels[i],
