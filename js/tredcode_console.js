@@ -319,16 +319,26 @@ function getHoliday() {
                 },
                 dateColor: "red"
             });
+
+            events.push({
+                date: newDate,
+                eventName: "Sunday holiday",
+                className: "badge bg-info", // You can choose a different class for the second event
+                onclick(e, data) {
+                    console.log(data);
+                },
+                dateColor: "#ffbd5a" // You can choose a different color for the second event
+            });
         }
         if (newDate.getDay() == 6) {   //if Saturday
             events.push({
                 date: newDate,
                 eventName: "Saturday free",
-                className: "badge bg-danger",
+                className: "badge bg-success",
                 onclick(e, data) {
                     console.log(data);
                 },
-                dateColor: "red"
+                dateColor: "white"
             });
         }
 
