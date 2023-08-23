@@ -3,10 +3,10 @@ var gcObject = {
     dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     dayBegin: 1,
     monthNames: [],
-    onPrevMonth: function (e) {},
-    onNextMonth: function (e) {},
-    events: [{ date: null, eventName: null, className: null, onclick: function (ev, data) {}, dateColor: "#38385c" }],
-    onclickDate: function (ev, data) {},
+    onPrevMonth: function (e) { },
+    onNextMonth: function (e) { },
+    events: [{ date: null, eventName: null, className: null, onclick: function (ev, data) { }, dateColor: "#38385c" }],
+    onclickDate: function (ev, data) { },
     nextIcon: "&gt;",
     prevIcon: "&lt;",
   }),
@@ -144,9 +144,9 @@ var gcObject = {
             cell.addClass("event");
             var event = $(`<div class="gc-event ${evt.className}">${evt.eventName}</div>`);
             dayStyle = "color:" + (evt.dateColor || "inherit");
-            event.on("click", function (e) {
-              evt.onclick(e, evt);
-            });
+            // event.on("click", function (e) {
+            //   console.log(e,evt);
+            // });
             cell.append(event);
           }
         });
@@ -244,18 +244,18 @@ var gcObject = {
       "November",
       "December",
     ];
-    gcObject.options.onPrevMonth = options.onPrevMonth || function (e) {};
-    gcObject.options.onNextMonth = options.onNextMonth || function (e) {};
+    gcObject.options.onPrevMonth = options.onPrevMonth || function (e) { };
+    gcObject.options.onNextMonth = options.onNextMonth || function (e) { };
     gcObject.options.events = options.events || [
       {
         date: null,
         eventName: null,
         className: null,
-        onclick: function (ev, data) {},
+        onclick: function (ev, data) { },
         dateColor: "#38385c",
       },
     ];
-    gcObject.options.onclickDate = options.onclickDate || function (e, data) {};
+    gcObject.options.onclickDate = options.onclickDate || function (e, data) { };
     gcObject.options.nextIcon = options.nextIcon || "&gt;";
     gcObject.options.prevIcon = options.prevIcon || "&lt;";
 

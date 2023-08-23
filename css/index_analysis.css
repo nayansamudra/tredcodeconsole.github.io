@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.bg-color {
+  background: #1c1c1c;
+}
+.text-light {
+  color: #f8f9fa !important;
+}
+.rounded {
+  border-radius: 8px !important;
+}
+.go_btn {
+  width: 120px;
+  color: lightgreen;
+  border: 1px solid grey;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.go_btn:hover {
+  box-shadow: 0 0 10px #00d3c1 !important;
+}
+.gb_active {
+  color: #00d3c1 !important;
+  box-shadow: 0 0 10px #00d3c1 !important;
+}
+.bg-faint {
+  background-color: #2e2e2e !important;
+  color: #ffbd5a;
+}
+.text-left {
+  text-align: left !important;
+}
+.divider {
+  color: white;
+}
+.apexcharts-yaxis-label tspan {
+  fill: white;
+}
+.apexcharts-xaxis-label tspan {
+  fill: white;
+}
+.apexcharts-title-text {
+  fill: white;
+}
+@media (max-width: 850px) {
+  #Expiry {
+    width: 120px !important;
+  }
+}
+@media (max-width: 768px) {
+  #Expiry_Date {
+    padding-top: 15px !important;
+  }
+  #Expiry_heading_span {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+  #Expiry_dropdown {
+    padding-top: 0rem !important;
+  }
+  .go_btn {
+    height: 50px !important;
+  }
+  #Top_Bar {
+    width: 99% !important;
+  }
+}
+@media (max-width: 400px) {
+  #OTM_ONLY span {
+    font-size: 14px !important;
+  }
+}
+
+/* ----------
+  Range Slider 
+  ---------- */
+
+.irs--flat.irs-with-grid {
+  height: 70px;
+}
+.irs {
+  font-size: 16px;
+}
+.irs--flat .irs-line,
+.irs--flat .irs-bar {
+  height: 15px;
+  top: 30px;
+  border-radius: 50px;
+}
+.irs--flat .irs-min,
+.irs--flat .irs-max,
+.irs--flat .irs-from,
+.irs--flat .irs-to,
+.irs--flat .irs-single,
+.irs-grid-text {
+  font-size: 14px;
+}
+.irs--flat .irs-min,
+.irs--flat .irs-max {
+  color: #2e2e2e;
+}
+.irs--flat .irs-handle {
+  top: 28px !important;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: #cbcfd5;
+  background: linear-gradient(to bottom, white 0%, #b4b9be 30%, white 100%);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), inset 0 0 3px 1px white;
+  border-radius: 30px;
+}
+.irs--flat .irs-handle i {
+  background-color: transparent !important;
+}
+
+/* -------
+  Apexchart 
+  ------- */
+
+.apexcharts-menu-item {
+  color: #1c1c1c !important;
+}
+.apexcharts-tooltip.apexcharts-theme-light {
+  color: #1c1c1c !important;
+}
+.m-1 {
+  margin: 0.25rem !important;
+}
+.border-faint {
+  border-bottom: 1px solid #2e2e2e;
+}
+@media (max-width: 992px) {
+  #strech_me {
+    margin-top: 0.5rem !important;
+    margin-left: 0 !important;
+  }
+  .col-lg-4 {
+    width: 100% !important;
+    padding-left: 0 !important;
+  }
+}
+#cust_legend_1_1,
+#cust_legend_2_1::before {
+  color: #00d3c0;
+}
+#cust_legend_1_2,
+#cust_legend_2_2::before {
+  color: #ff5253;
+}
+.cust_legend_value {
+  background-color: grey;
+  padding: 1% 7%;
+  border-radius: 15px;
+  font-weight: bold;
+}
+.h4 {
+  font-size: 1.125rem;
+}
+.h3 {
+  font-size: 1.525rem;
+}
+@media (min-width: 800px) {
+  .donutchart {
+    min-height: 350px !important;
+  }
+}
+@media (max-width: 576px) {
+  .Mobile_View {
+    display: block !important;
+  }
+  .Laptop_View {
+    display: none !important;
+  }
+  .h4,
+  .pcr_net {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 576px) {
+  .Mobile_View {
+    display: none !important;
+  }
+  .Laptop_View {
+    display: block !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .mx-3 {
+    margin-right: 0.25rem !important;
+    margin-left: 0.25rem !important;
+  }
+  .go_btn {
+    font-size: 14px !important;
+  }
+  #Submit {
+    font-size: 12px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

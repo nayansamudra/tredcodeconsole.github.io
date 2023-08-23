@@ -1,0 +1,144 @@
+.container-scroller {
+  overflow: hidden;
+}
+
+.page-body-wrapper {
+  min-height: calc(100vh - 60px);
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 60px;
+}
+
+.bg-color {
+  background: #1c1c1c;
+}
+
+.text-light {
+  color: #f8f9fa !important;
+}
+
+.rounded {
+  border-radius: 8px !important;
+}
+
+.go_btn,
+.go_btn_top {
+  width: 120px;
+  color: lightgreen;
+  border: 1px solid grey;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.go_btn:hover {
+  box-shadow: 0 0 10px #00d3c1 !important;
+}
+
+.gb_active {
+  color: #00d3c1 !important;
+  /* border: 1px solid #1C1C1C; */
+  box-shadow: 0 0 10px #00d3c1 !important;
+}
+
+.h-95 {
+  height: 95% !important;
+}
+
+.h-85 {
+  height: 85% !important;
+}
+
+.bg-faint {
+  background-color: #2e2e2e !important;
+  color: #ffbd5a;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.container .row span {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.spl-margin-l {
+  margin: 1.5% 2% 1.5% 3%;
+}
+
+.spl-margin-r {
+  margin: 1.5% 4% 1.5% 2%;
+}
+
+@media (max-width: 768px) {
+  #drop_down_time_expiry .container {
+    justify-content: left !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  #Time_heading_span,
+  #Expiry_heading_span {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+
+  #Time_dropdown,
+  #Expiry_dropdown {
+    padding-top: 0rem !important;
+  }
+
+  .go_btn {
+    height: 50px !important;
+  }
+}
+
+.divider {
+  color: white;
+}
+
+.apexcharts-yaxis-label tspan {
+  fill: white;
+}
+
+.apexcharts-xaxis-label tspan {
+  fill: white;
+}
+
+.apexcharts-title-text {
+  fill: white;
+}
+
+.top_arrow {
+  z-index: 12;
+  text-align: center;
+  position: fixed;
+  top: 90%;
+  right: 20px;
+  margin-left: 5px;
+  border: 1px solid grey;
+  transition: 0.3s;
+  padding: 5px;
+  width: 40px;
+}
+
+.top_arrow:hover {
+  box-shadow: 0 0 10px #f8f9fa;
+}
+
+#chart_2 .apexcharts-canvas svg {
+  padding-left: 7px !important;
+}
+
+@media (min-width: 992px) {
+  #Candlestick_container {
+    border-right: 0.25rem solid #0e0e0e;
+  }
+
+  #Dials_and_Bar {
+    border-left: 0.25rem solid #0e0e0e;
+  }
+}

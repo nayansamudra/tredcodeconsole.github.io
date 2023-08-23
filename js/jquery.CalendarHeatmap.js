@@ -69,7 +69,7 @@
                 if (Array.isArray(dates) && dates.length > 0) {
                     var arrtype = typeof dates[0];
                     if (typeof dates[0] === "object" && !Array.isArray(dates[0])) {
-                        if (dates[0].date && dates[0].count) {
+                        if (dates[0].date && dates[0].count && dates[0].no_of_trades) {
                             arr = [];
                             for (var h in dates) {
                                 var objDate = dates[h].date;
@@ -78,7 +78,8 @@
                                 }
                                 arr.push({
                                     "count": parseInt(dates[h].count),
-                                    "date": this._dateFormat(objDate)
+                                    "date": this._dateFormat(objDate),
+                                    "no_of_trades": parseInt(dates[h].no_of_trades)
                                 });
                             }
                             return arr;
@@ -145,7 +146,7 @@
 
             // Calculate bins for events
             var i;
-            var bins = this.settings.steps || 4;
+            var bins = this.settings.steps || 5;
             var binlabels = ["0"];
             var binlabelrange = [[0, 0]];
 
@@ -171,6 +172,7 @@
                 binlabels = [""];
             } else {
                 binlabels = ["0"];
+                // binlabels = [Math.min.apply(Math, arr)];
             }
 
             for (i = 0; i < bins; i++) {
@@ -192,6 +194,7 @@
                         String(r2));
                 }
             }
+
 
             // Assign levels (bins) to counts
             for (i in events) {
@@ -498,13 +501,20 @@
                     var str = year + "-" + this._pad((month + 1), 2);
                     str += "-" + this._pad((j + 1), 2);
                     var obj = this._matchDate(events, str);
+                    
                     var future = "";
                     if (this._futureDate(str)) {
                         future = " is-after-today";
                     }
                     if (obj) {
-                        var title = "₹" + obj.count + " on ";
+                        // console.log(obj)
+                        if(obj.count >= 0) {
+                            var title = "₹" + obj.count + " on ";
+                        } else {
+                            var title = "-₹" + Math.abs(obj.count) + " on ";
+                        }
                         title += this._dateFormat(obj.date, "MMM D, YYYY");
+                        title += ', ' + obj.no_of_trades + ' trades';
 
                         var color = "";
 
@@ -515,7 +525,8 @@
                         $("<div/>", {
                             "class": "ch-day lvl-" + obj.level + color,
                             "title": title,
-                            "data-toggle": "tooltip"
+                            "data-toggle": "tooltip",
+                            "data-val": obj.count
                         }).appendTo(
                             $(".ch-month:last .ch-weeks .ch-week:last", this.element)
                         );
@@ -575,7 +586,7 @@
                 }
 
                 // Add the legend steps
-                for (i = 0; i <= binLabels.length; i++) {
+                for (i = 0; i < binLabels.length; i++) {
                     $("<li>", {
                         "class": "ch-lvl lvl-" + i,
                         "title": binLabels[i],

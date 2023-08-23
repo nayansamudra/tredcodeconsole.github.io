@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Home | Tredcode</title>
+   <title>Trading Journal | Tredcode</title>
    <!-- Bootstrap CSS -->
    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> -->
@@ -29,6 +29,17 @@
 
    <!-- Calender (Monthly View)-->
    <link rel="stylesheet" type="text/css" href="css/calendar-gc.css">
+
+   <!-- Fuzzy Suggestion -->
+   <link rel="stylesheet" type="text/css" href="css/fuzzycomplete.min.css">
+
+   <!-- DataTable-->
+   <link rel="stylesheet" type="text/css" href="css/datatables.css">
+
+   <!-- chart.js-->
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="js/chartjs-plugin-crosshair.js"></script>
+
 </head>
 
 <body>
@@ -37,7 +48,7 @@
          <a class="navbar-brand brand-logo mx-2" href="/home"><img src="img/Tredcode_logo.png" alt="logo" /> </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-         <span id="page_heading" class="text-light h3 m-auto">TREDCODE CONSOLE</span>
+         <span id="page_heading" class="text-light h3 m-auto">TRADING JOURNAL</span>
          <ul class="nifty navbar-nav navbar-nav-right py-3 px-2" id="nifty_block_head">
             <li class="text px-1"><span id="swingname1">NIFTY</span></li>
             <li class="amount px-1 text-light"><span id="swingamount1">-</span></li>
@@ -112,6 +123,12 @@
                   <span id="menu_item_7" class="tooltip">&nbsp;Money-Flux</span>
                </a>
             </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/trading_journal">
+                  <img src="img/trade_with_tredcode.png">
+                  <span id="menu_item_9" class="tooltip">&nbsp;Trading Journal</span>
+               </a>
+            </li>
             <li class="nav-item" id="t_sidebar">
                <a class="nav-link" href="/trade-with-tredcode">
                   <img src="img/trade_with_tredcode.png">
@@ -119,12 +136,7 @@
                      Tredcode</span>
                </a>
             </li>
-            <li class="nav-item">
-               <a class="nav-link" href="/console">
-                  <img src="img/trade_with_tredcode.png">
-                  <span id="menu_item_9" class="tooltip">&nbsp;Console</span>
-               </a>
-            </li>
+
          </ul>
       </nav>
       <nav class="sidebar sidebar-offcanvas" id="sidebar2" style="visibility: hidden; width: 60px; display: none;">
@@ -157,33 +169,27 @@
 
             <div class="d-flex justify-content-center mb-4">
                <!-- <a href="/trade-with-tredcode"><span class="tooltip_1">>> Trade with Tredcode</span></a> -->
-               <a href="/trade-with-tredcode" role="button" class="btn btn-outline-info" id="check_access_button"
+               <a href="/tra  de-with-tredcode" role="button" class="btn btn-outline-info" id="check_access_button"
                   style="font-weight: bold; text-decoration: underline;">>> Trade with Tredcode</a>
             </div>
 
             <!-- Three Button-->
             <div class="px-0" style="width: 100%;" id="Top_Bar">
-               <div class="row mx-2 my-2 bg-color rounded">
-                  <div class="col-12 px-0 py-3 text-light" id="Button_Col">
+               <div class="row mx-2 my-2">
+                  <div class="col-12 px-0 py-0 text-light" id="Button_Col">
                      <div class="px-0 container-fluid">
-                        <div class="row d-flex align-items-center my-0">
-                           <div
-                              class="col w-100 h-100 mx-3 px-0 bg-color text-light d-flex justify-content-center button_height">
-                              <button class="go_btn bg-color text-white font-weight-bold w-100 h-100 rounded"
-                                 id="add_trade" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1">Add
-                                 Trade</button>
-                           </div>
-                           <div
-                              class="col w-100 h-100 me-3 px-0 bg-color text-light d-flex justify-content-center button_height">
-                              <button class="go_btn bg-color text-white font-weight-bold w-100 h-100 rounded"
-                                 id="bulk_import" type="button">Bulk Import</button>
-                           </div>
-                           <div
-                              class="col w-100 h-100 me-3 px-0 bg-color text-light d-flex justify-content-center button_height">
+                        <div class="d-flex flex-row-reverse align-items-center my-0">
+                           <div class="p-2 h-100 me-2 px-0 text-light button_height">
                               <button class="go_btn bg-color text-white font-weight-bold w-100 h-100 rounded"
                                  id="date_range_selector" type="button" data-bs-toggle="modal"
-                                 data-bs-target="#exampleModal2">Date Range Selector</button>
+                                 data-bs-target="#exampleModal2">Date Range Selector 📆</button>
                            </div>
+                           <div class="p-2 h-100 mx-3 px-0 text-light button_height">
+                              <button class="go_btn bg-color text-white font-weight-bold w-100 h-100 rounded"
+                                 id="add_trade" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1">Add
+                                 Trade (+)</button>
+                           </div>
+
                         </div>
                      </div>
                   </div>
@@ -192,27 +198,173 @@
 
             <!-- Calendar HeatMap-->
             <div class="row my-2 py-2 bg-color rounded">
-               <div class="col calender_heatmap">
-                  <div id="heatmap-5"></div>
+               <div class="px-0 py-0 col-12">
+                  <div class="px-0 container-fluid">
+                     <div class="d-flex flex-row-reverse align-items-center my-0 py-0">
+                        <div
+                           class="p-2 h-100 me-3 px-0 bg-color text-light d-flex justify-content-center button_height">
+                           <button class="px-4 go_btn bg-color text-white font-weight-bold w-100 h-100 rounded"
+                              id="equity_curve" type="button">Equity Curve</button>
+                        </div>
+                        <div
+                           class="p-2 h-100 me-3 px-0 bg-color text-light d-flex justify-content-center button_height">
+                           <button class="px-4 gb_active go_btn bg-color text-white font-weight-bold w-100 h-100 rounded"
+                              id="cal_heatmap" type="button">Heatmap</button>
+                        </div>
+                     </div>
+                  </div>
                </div>
-            </div>
-
-            <div class="row my-2 py-2 text-white bg-color rounded">
-               <div class="col">
-                  <h3>Update the above Calendar Heatmap</h3>
-                  <button class="btn btn-secondary btn-sm mt-2" id="heatmap-5-random">Random Dates</button>
-                  <button class="btn btn-secondary btn-sm mt-2" id="heatmap-5-empty">Empty</button>
-                  <button class="btn btn-secondary btn-sm mt-2" id="heatmap-5-append">Append Dates</button>
-                  <button class="btn btn-secondary btn-sm mt-2" id="heatmap-5-wkday">Toggle Weekdays</button>
+               <div class="mt-3 col calender_heatmap">
+                  <div id="CalendarHeatmap"></div>
+                  <div class="d-none" id="show_hide_chart" style="height: 300px;">
+                     <canvas id="linechart"></canvas>
+                  </div>
                </div>
             </div>
 
             <!-- 1 month Calendar detail view and All Stats-->
             <div class="row mx-2 mb-2" id="Bottom_Part">
-               <div class="col-lg-4 bg-color rounded px-0" id="one_month_calendar">
+               <div class="col-lg-5 bg-color rounded px-0" id="one_month_calendar">
                   <div id="calendar" style="padding: 0.5rem;"></div>
                </div>
-               <div class="ms-2 col-lg bg-color rounded" id="All_stats">
+               <div class="ms-2 col-lg bg-color rounded text-light" id="All_stats">
+                  <h1 class="text-center">Statistics</h1>
+                  <div class="my-3 px-2 text-center selected_range" style="display: none; color: #ffbd5a;">
+                     <span id="All_stats_Entry_date" style="font-size: x-large; font-weight: 500; color: #fff;"></span>
+                     &nbsp;to&nbsp;
+                     <span id="All_stats_Exit_date" style="font-size: x-large; font-weight: 500; color: #fff;"></span>
+                  </div>
+                  <div class="mb-3 row selected_range" style="display: none;">
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Total P&L</td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td" style="font-size: xx-large; font-weight: 400;"><span
+                                    id="total_profits"></span></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Total Trades</td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td" style="font-size: xx-large; font-weight: 400; color: #ffbd5a;"><span
+                                    id="total_trades"></span></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Biggest Win</td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td"
+                                 style="font-size: xx-large; font-weight: 400; color: rgb(123, 219, 123);"><span
+                                    id="biggest_win"></span></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Biggest Loss</td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td"
+                                 style="font-size: xx-large; font-weight: 400; color: rgb(252, 92, 93);"><span
+                                    id="biggest_loss"></span></td>
+                           </tr>
+                        </table>
+                     </div>
+                  </div>
+                  <div class="mb-3 row selected_range" style="display: none;">
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Avg. Winner</td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td"
+                                 style="font-size: xx-large; font-weight: 400; color: rgb(123, 219, 123)"><span
+                                    id="avg_winner"></span></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Avg. Losser</td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td"
+                                 style="font-size: xx-large; font-weight: 400; color: rgb(252, 92, 93);"><span
+                                    id="avg_losser"></span></td>
+                           </tr>
+                        </table>
+                     </div>
+                  </div>
+                  <div class="mb-3 row selected_range" style="display: none;">
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Risk to Reward</td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td" style="font-size: xx-large; font-weight: 400; color: #ffbd5a;"><span
+                                    id="risk_reward"></span></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Avg. P&L</td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td" style="font-size: xx-large; font-weight: 400;"><span
+                                    id="avg_pnl"></span></td>
+                           </tr>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Chart & Table -->
+            <div class="row mx-2 mb-2" id="chart_and_table">
+               <div class="col-lg-12 bg-color rounded text-light" id="Table_view">
+                  <div class="my-4 row individual_day_data" style="display: block;">
+                     <div class="px-0 text-center bg-color1 rounded col" style="width:100%; overflow-x:auto">
+                        <table class="mx-0 my-0 px-0" style="font-size: 12px; font-weight: bold;" id="dataTable">
+                           <thead class="py-2" style="color:#a9fff8">
+                              <tr>
+                                 <td>Status</td>
+                                 <td>Entry Time</td>
+                                 <td>Exit Time</td>
+                                 <td>Symbol</td>
+                                 <td>Entry</td>
+                                 <td>Exit</td>
+                                 <td>Quantity</td>
+                                 <td>Type</td>
+                                 <td>Return</td>
+                                 <td>Action</td>
+                              </tr>
+                           </thead>
+                           <tbody class="px-2" style="background-color: #1c1c1c;"></tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <div class="mt-2 col-lg-6 bg-color rounded px-0" id="bar_chart">
+                  <div id="bar_chart_apexchart" style="padding: 0.5rem;"></div>
+               </div>
+               <div class="ms-2 mt-2 col-lg bg-color rounded px-0" id="winner_losser">
+                  winner Losser
                </div>
             </div>
 
@@ -243,6 +395,8 @@
       <!-- main-panel ends -->
    </div>
 
+
+
    <footer class="footer">
       <div class="row">
          <div class="col-md-12">
@@ -260,68 +414,70 @@
          <div class="modal-content bg-color border-0">
             <div class="modal-header border-bottom-0">
                <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Add Trade Inputs:</h1>
-               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body bg-faint">
                <table>
                   <tr>
-                     <td>Trade Type:</td>
+                     <td>Trade Type:<span class="ps-1" style="font-size: 20px; color:#ff0000">*</span></td>
                      <td class="d-flex align-items-center">
-                        <span style="font-weight: 500; color:#6bd368" id="long_text">Long</span> <label class="switch">
+                        <span style="font-weight: 500; color:#fff" id="long_text">Long</span> <label class="switch">
                            <input type="checkbox" id="checkbox">
                            <span class="slider"></span>
-                        </label> <span style="font-weight: 500; color:#6bd368" id="short_text">Short</span>
+                        </label> <span style="font-weight: 500; color:#fff" id="short_text">Short</span>
                      </td>
                   </tr>
                   <tr>
-                     <td>Entry Date & Time:</td>
-                     <td><input type="datetime-local" id="Entry_date_time" name="Entry_date_time"></td>
+                     <td>Entry Date & Time:<span class="ps-1" style="font-size: 20px; color:#ff0000">*</span></td>
+                     <td><input type="datetime-local" id="Entry_date_time" name="Entry_date_time" required></td>
                   </tr>
                   <tr>
-                     <td>Exit Date & Time:</td>
-                     <td><input type="datetime-local" id="Exit_date_time" name="Exit_date_time"></td>
+                     <td>Exit Date & Time:<span class="ps-1" style="font-size: 20px; color:#ff0000">*</span></td>
+                     <td><input type="datetime-local" id="Exit_date_time" name="Exit_date_time" required></td>
                   </tr>
                   <tr>
-                     <td>Symbol/Ticker:</td>
+                     <td>Symbol/Ticker:<span class="ps-1" style="font-size: 20px; color:#ff0000">*</span></td>
                      <td>
-                        <div class="dropdown">
-                           <input type="text" id="Symbol_Ticker" placeholder="Type here..." class="placeholder-color">
-                           <div id="suggestionDropdown" class="dropdown-content"></div>
-                        </div>
+                        <input type="text" id="Symbol_Ticker" name="Symbol_Ticker" placeholder="Type here..."
+                           class="placeholder-color" required>
                      </td>
                   </tr>
                   <tr>
-                     <td>Entry Price:</td>
-                     <td><input type="number" id="Entry_price" name="Entry_price"></td>
+                     <td>Entry Price:<span class="ps-1" style="font-size: 20px; color:#ff0000">*</span></td>
+                     <td><input type="number" id="Entry_price" name="Entry_price" required></td>
                   </tr>
                   <tr>
-                     <td>Exit Price:</td>
-                     <td><input type="number" id="Exit_price" name="Exit_price"></td>
+                     <td>Exit Price:<span class="ps-1" style="font-size: 20px; color:#ff0000">*</span></td>
+                     <td><input type="number" id="Exit_price" name="Exit_price" required></td>
                   </tr>
                   <tr>
-                     <td>Quantity:</td>
-                     <td><input type="number" id="Quantity" name="Quantity"></td>
+                     <td>Quantity:<span class="ps-1" style="font-size: 20px; color:#ff0000">*</span></td>
+                     <td><input type="number" id="Quantity" name="Quantity" required></td>
                   </tr>
                   <tr>
                      <td>How did you find the trade ?</td>
-                     <td><textarea rows="3" id="Find_Trade" name="Find_Trade" placeholder="Only upto 300 character" class="placeholder-color"></textarea></td>
+                     <td><textarea rows="3" id="Find_Trade" name="Find_Trade" placeholder="Only upto 300 character"
+                           class="placeholder-color"></textarea></td>
                   </tr>
                   <tr>
                      <td>Entry Reason:</td>
-                     <td><textarea rows="3" id="Entry_reason" name="Entry_reason" placeholder="Only upto 300 character" class="placeholder-color"></textarea></td>
+                     <td><textarea rows="3" id="Entry_reason" name="Entry_reason" placeholder="Only upto 300 character"
+                           class="placeholder-color"></textarea></td>
                   </tr>
                   <tr>
                      <td>Exit Reason:</td>
-                     <td><textarea rows="3" id="Exit_reason" name="Exit_reason" placeholder="Only upto 300 character" class="placeholder-color"></textarea></td>
+                     <td><textarea rows="3" id="Exit_reason" name="Exit_reason" placeholder="Only upto 300 character"
+                           class="placeholder-color"></textarea></td>
                   </tr>
                   <tr>
                      <td>Mistakes made / Lessons learned</td>
-                     <td><textarea rows="3" id="Mistakes" name="Mistakes" placeholder="Only upto 300 character" class="placeholder-color"></textarea></td>
+                     <td><textarea rows="3" id="Mistakes" name="Mistakes" placeholder="Only upto 300 character"
+                           class="placeholder-color"></textarea></td>
                   </tr>
                </table>
             </div>
             <div class="modal-footer border-top-0">
-               <button type="button" class="btn btn-outline-light">View</button>
+               <button type="button" class="btn btn-outline-light" id="add_trade_submit">Submit</button>
             </div>
          </div>
       </div>
@@ -333,22 +489,32 @@
          <div class="modal-content bg-color border-0">
             <div class="modal-header border-bottom-0">
                <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Select Date Range:</h1>
-               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               <button type="button" id="view_trade_close" class="btn-close bg-white" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
             </div>
             <div class="modal-body bg-faint">
                <table>
                   <tr>
-                     <td>Entry Date:</td>
+                     <td>Select Range:</td>
+                     <td class="d-flex align-items-center">
+                        <span style="font-weight: 500; color:#fff" id="all">All</span> <label class="switch1">
+                           <input type="checkbox" id="checkbox1">
+                           <span class="slider1"></span>
+                        </label> <span style="font-weight: 500; color:#fff" id="select_range">Select</span>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td class="disable_color">Entry Date:</td>
                      <td><input type="date" id="Entry_date" name="Entry_date"></td>
                   </tr>
                   <tr>
-                     <td>Exit Date:</td>
+                     <td class="disable_color">Exit Date:</td>
                      <td><input type="date" id="Exit_date" name="Exit_date"></td>
                   </tr>
                </table>
             </div>
             <div class="modal-footer border-top-0">
-               <button type="button" class="btn btn-outline-light">View</button>
+               <button type="button" class="btn btn-outline-light" id="view_trade_submit">View</button>
             </div>
          </div>
       </div>
@@ -395,30 +561,36 @@
    <!-- Calender (Monthly View)-->
    <script src="js/calendar-gc.js"></script>
 
+   <!-- Fuzzy Suggestion -->
+   <script src="js/fuse.min.js"></script>
+   <script src="js/fuzzycomplete.min.js"></script>
+
+   <!-- Datatable -->
+   <script src="js/datatables.min.js"></script>
+
+   <!-- Apexchart -->
+   <script src="js/apexcharts.js"></script>
+
    <!-- Manual Jquery -->
    <script>
       if ($(window).width() < 575) {
-         $('#add_trade').html('Add <br> Trade')
-         $('#bulk_import').html('Bulk <br> Import')
-         $('#date_range_selector').html('Date Range <br> Selector')
+         $('#add_trade').html('Add <br> Trade (+)')
+         $('#date_range_selector').html('Date Range <br> Selector 📆')
          $('.modal-dialog').removeClass('modal-lg')
       } else if ($(window).width() >= 575) {
-         $('#add_trade').text('Add Trade')
-         $('#bulk_import').text('Bulk Import')
-         $('#date_range_selector').text('Date Range Selector')
+         $('#add_trade').text('Add Trade (+)')
+         $('#date_range_selector').text('Date Range Selector 📆')
          $('.modal-dialog').addClass('modal-lg')
       }
-      
+
       $(window).on("resize", function () {
          if ($(window).width() < 575) {
-            $('#add_trade').html('Add <br> Trade')
-            $('#bulk_import').html('Bulk <br> Import')
-            $('#date_range_selector').html('Date Range <br> Selector')
+            $('#add_trade').html('Add <br> Trade (+)')
+            $('#date_range_selector').html('Date Range <br> Selector 📆')
             $('.modal-dialog').removeClass('modal-lg')
          } else if ($(window).width() >= 575) {
-            $('#add_trade').text('Add Trade')
-            $('#bulk_import').text('Bulk Import')
-            $('#date_range_selector').text('Date Range Selector')
+            $('#add_trade').text('Add Trade (+)')
+            $('#date_range_selector').text('Date Range Selector 📆')
             $('.modal-dialog').addClass('modal-lg')
          }
       })

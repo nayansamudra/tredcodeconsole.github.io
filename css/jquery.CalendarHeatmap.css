@@ -6,10 +6,11 @@
  *  Made by Sebastian Kuhlgert
  *  Under MIT License
  */
-.ch {
+ 
+/* .ch {
   display: table !important;
   clear: both;
-}
+} */
 .ch-rounded .ch-day,
 .ch-rounded .ch-lvl {
   border-radius: 35%;
@@ -70,10 +71,12 @@
   width: 15px;
   height: 15px;
   border: 1px solid rgb(0, 0, 0);
-  background-color: #dcdcdc;
+  /* background-color: #dcdcdc; */
+  background-color: #ecebeb;
   margin: 0;
   box-sizing: content-box;
   border-radius: 15%;
+  transition: transform 0.3s ease !important;
 }
 .ch-day.is-outside-month,
 .ch-lvl.is-outside-month,
@@ -88,19 +91,19 @@
 }
 .ch-day.is-after-today,
 .ch-lvl.is-after-today {
-  background-color: white;
+  background-color: #b5b2b2;
 }
 .ch-day.lvl-1,
 .ch-lvl.lvl-1 {
-  background-color: #ff3f3f;
+  background-color: #fe5858;
 }
 .ch-day.lvl-2,
 .ch-lvl.lvl-2 {
-  background-color: #fc5c5d;
+  background-color: #ff8a8a;
 }
 .ch-day.lvl-3,
 .ch-lvl.lvl-3 {
-  background-color: #7bdb7b;
+  background-color: #8ed98e;
 }
 .ch-day.lvl-4,
 .ch-lvl.lvl-4 {
@@ -114,6 +117,15 @@
 .ch-lvl:hover {
   border-color: #ababab;
 }
+.ch-day + .green-0:hover,
+.ch-day + .green-1:hover,
+.ch-day + .green-2:hover,
+.ch-day + .green-3:hover,
+.ch-day + .green-4:hover,
+.ch-day + .green-5:hover {
+  transform: scale(1.5) !important;
+}
+
 .ch-legend {
   padding-top: 10px;
   padding-right: 5px;
@@ -147,102 +159,21 @@
   float: left;
   margin-left: 3px;
 }
-.blue-1 {
-  background-color: #ffffcc !important;
-}
-.earth-1 {
-  background-color: #f4ec15 !important;
-}
-.electric-1 {
-  background-color: #f9d824 !important;
-}
-.viridis-1 {
-  background-color: #dde218 !important;
-}
-.picknick-1 {
-  background-color: #dd2a91 !important;
+.green-0 {
+  background-color: #f90e03;
 }
 .green-1 {
-  background-color: #ff3f3f !important;
-}
-.teal-1 {
-  background-color: #becfb6 !important;
-}
-.red-1 {
-  background-color: #deb7af !important;
-}
-.blue-2 {
-  background-color: #41b6c4 !important;
-}
-.earth-2 {
-  background-color: #86bf76 !important;
-}
-.electric-2 {
-  background-color: #f38647 !important;
-}
-.viridis-2 {
-  background-color: #42bd70 !important;
-}
-.picknick-2 {
-  background-color: #b14dec !important;
+  background-color: #fe5858;
 }
 .green-2 {
-  background-color: #fc5c5d !important;
-}
-.teal-2 {
-  background-color: #7db28f !important;
-}
-.red-2 {
-  background-color: #cf8371 !important;
-}
-.blue-3 {
-  background-color: #0868ac !important;
-}
-.earth-3 {
-  background-color: #117bd7 !important;
-}
-.electric-3 {
-  background-color: #8e0ca3 !important;
-}
-.viridis-3 {
-  background-color: #355c8c !important;
-}
-.picknick-3 {
-  background-color: #2e8ebf !important;
+  background-color: #ff8a8a;
 }
 .green-3 {
-  background-color: #7bdb7b !important;
-}
-.teal-3 {
-  background-color: #107d79 !important;
-}
-.red-3 {
-  background-color: #b63b25 !important;
-}
-.blue-4 {
-  background-color: #253494 !important;
-}
-.earth-4 {
-  background-color: #363299 !important;
-}
-.electric-4 {
-  background-color: #2e0495 !important;
-}
-.viridis-4 {
-  background-color: #471164 !important;
-}
-.picknick-4 {
-  background-color: #139863 !important;
+  background-color: #8ed98e;
 }
 .green-4 {
-  background-color: #6bd368 !important;
-}
-.teal-4 {
-  background-color: #1c475d !important;
-}
-.red-4 {
-  background-color: #90131c !important;
+  background-color: #6bd368;
 }
 .green-5 {
-  background-color: #33d026 !important;
+  background-color: #33d026;
 }

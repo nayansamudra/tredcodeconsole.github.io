@@ -89,7 +89,7 @@
 
 .gc-calendar table.calendar td .day-number {
   font-weight: 800;
-  line-height: 38.09px;
+  /* line-height: 38.09px; */
   overflow-y: auto;
   color: #fff;
   text-decoration: none;
@@ -139,14 +139,13 @@
 .gc-calendar .gc-event {
   display: block;
   width: max-content;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   margin-left: auto;
   margin-right: auto;
   padding-left: 0;
   padding-right: 0;
+  color: #1c1c1c;
 }
-
-
 
 .slide-in-left {
   -webkit-animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

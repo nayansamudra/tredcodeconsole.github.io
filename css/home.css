@@ -1,0 +1,41 @@
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.col-md-3,
+.col-md,
+.col-lg {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.swing-heading {
+  padding: 15px;
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+@media (min-width: 992px) {
+  .col-lg {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  .m-2 {
+    margin: 0 !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    width: 95% !important;
+  }
+}
