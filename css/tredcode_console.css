@@ -447,6 +447,10 @@ table#dataTable {
   font-weight: 500 !important;
 }
 
+table#dataTable tr td:nth-child(1) {
+  padding-left: 10px !important;
+}
+
 table#dataTable tr td:nth-child(2),
 table#dataTable tr td:nth-child(3),
 table#dataTable tr td:nth-child(4) {
@@ -476,4 +480,8 @@ table#dataTable tr td:nth-child(10) {
   table#dataTable tr {
     width: 1000px !important;
   }
+}
+
+table#dataTable tr {
+  border-radius: 10px !important;
 }

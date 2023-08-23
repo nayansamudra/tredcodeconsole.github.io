@@ -92,6 +92,7 @@ const view_trade = () => {
                 $('#view_trade_close').click()
                 all_stats()
                 dataTable()
+                $('#chart_and_table').show()
             } else {
                 alert("Error");
             }
@@ -537,21 +538,31 @@ const delete_trade = (trade_id) => {
 
     console.log(trade_id)
 
+    if (confirm("are you sure")) { } else { return; }
+
     data_dict = {
         'trade_id': trade_id
     };
 
     data = JSON.stringify(data_dict);
 
-    // $.post(
-    //     root + route + "/curd_journal",
-    //     { 'op': 'delete', 'data': data },
-    //     function (data, status) {
-    //         console.log(data, status)
-    //     }
-    // ).fail(function (response) {
-    //     console.log("Error: " + response);
-    // });
+    $.post(
+        root + route + "/curd_journal",
+        { 'op': 'delete', 'data': data },
+        function (data, status) {
+            console.log(data, status)
+            if (data == "success") {
+                view_trade()
+                setTimeout(() => {
+                    alert("Trade deleted Successfully!");
+                }, 200);
+            } else {
+                alert("Unable to delete Trade");
+            }
+        }
+    ).fail(function (response) {
+        console.log("Error: " + response);
+    });
 }
 
 
@@ -786,7 +797,7 @@ $(document).ready(function () {
     // ------ Apexchart
     var options = {
         series: [{
-            name: 'Cash Flow',
+            name: 'MTM Value',
             data: []
         }],
         chart: {
@@ -809,7 +820,7 @@ $(document).ready(function () {
                         color: '#fc5c5d'
                     }]
                 },
-                columnWidth: '50%',
+                columnWidth: '80%',
             }
         },
         dataLabels: {
@@ -1064,6 +1075,12 @@ $(document).on("click", ".event", (e) => {
 
     data_table.clear();
     data_table.rows.add(filteredArray);
+    data_table.draw();
+})
+
+$(document).on("click", ".fa-rotate-right", () => {
+    data_table.clear();
+    data_table.rows.add(data_table_array);
     data_table.draw();
 })
 

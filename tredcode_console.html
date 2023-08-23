@@ -208,7 +208,8 @@
                         </div>
                         <div
                            class="p-2 h-100 me-3 px-0 bg-color text-light d-flex justify-content-center button_height">
-                           <button class="px-4 gb_active go_btn bg-color text-white font-weight-bold w-100 h-100 rounded"
+                           <button
+                              class="px-4 gb_active go_btn bg-color text-white font-weight-bold w-100 h-100 rounded"
                               id="cal_heatmap" type="button">Heatmap</button>
                         </div>
                      </div>
@@ -228,13 +229,13 @@
                   <div id="calendar" style="padding: 0.5rem;"></div>
                </div>
                <div class="ms-2 col-lg bg-color rounded text-light" id="All_stats">
-                  <h1 class="text-center">Statistics</h1>
-                  <div class="my-3 px-2 text-center selected_range" style="display: none; color: #ffbd5a;">
-                     <span id="All_stats_Entry_date" style="font-size: x-large; font-weight: 500; color: #fff;"></span>
+                  <h3 class="mt-2 text-center">Statistics</h3>
+                  <div class="my-3 px-2 text-center selected_range" style="color: #ffbd5a;">
+                     <span id="All_stats_Entry_date" style="font-size: x-large; font-weight: 500; color: #fff;">------</span>
                      &nbsp;to&nbsp;
-                     <span id="All_stats_Exit_date" style="font-size: x-large; font-weight: 500; color: #fff;"></span>
+                     <span id="All_stats_Exit_date" style="font-size: x-large; font-weight: 500; color: #fff;">------</span>
                   </div>
-                  <div class="mb-3 row selected_range" style="display: none;">
+                  <div class="mb-3 row selected_range">
                      <div class="px-0 text-center bg-color1 rounded col mx-2">
                         <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
                            <tr>
@@ -242,7 +243,7 @@
                            </tr>
                            <tr>
                               <td class="answer_td" style="font-size: xx-large; font-weight: 400;"><span
-                                    id="total_profits"></span></td>
+                                    id="total_profits">------</span></td>
                            </tr>
                         </table>
                      </div>
@@ -253,7 +254,7 @@
                            </tr>
                            <tr>
                               <td class="answer_td" style="font-size: xx-large; font-weight: 400; color: #ffbd5a;"><span
-                                    id="total_trades"></span></td>
+                                    id="total_trades">------</span></td>
                            </tr>
                         </table>
                      </div>
@@ -265,7 +266,7 @@
                            <tr>
                               <td class="answer_td"
                                  style="font-size: xx-large; font-weight: 400; color: rgb(123, 219, 123);"><span
-                                    id="biggest_win"></span></td>
+                                    id="biggest_win">------</span></td>
                            </tr>
                         </table>
                      </div>
@@ -277,12 +278,12 @@
                            <tr>
                               <td class="answer_td"
                                  style="font-size: xx-large; font-weight: 400; color: rgb(252, 92, 93);"><span
-                                    id="biggest_loss"></span></td>
+                                    id="biggest_loss">------</span></td>
                            </tr>
                         </table>
                      </div>
                   </div>
-                  <div class="mb-3 row selected_range" style="display: none;">
+                  <div class="mb-3 row selected_range">
                      <div class="px-0 text-center bg-color1 rounded col mx-2">
                         <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
                            <tr>
@@ -291,7 +292,7 @@
                            <tr>
                               <td class="answer_td"
                                  style="font-size: xx-large; font-weight: 400; color: rgb(123, 219, 123)"><span
-                                    id="avg_winner"></span></td>
+                                    id="avg_winner">------</span></td>
                            </tr>
                         </table>
                      </div>
@@ -303,12 +304,12 @@
                            <tr>
                               <td class="answer_td"
                                  style="font-size: xx-large; font-weight: 400; color: rgb(252, 92, 93);"><span
-                                    id="avg_losser"></span></td>
+                                    id="avg_losser">------</span></td>
                            </tr>
                         </table>
                      </div>
                   </div>
-                  <div class="mb-3 row selected_range" style="display: none;">
+                  <div class="mb-3 row selected_range">
                      <div class="px-0 text-center bg-color1 rounded col mx-2">
                         <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
                            <tr>
@@ -316,7 +317,7 @@
                            </tr>
                            <tr>
                               <td class="answer_td" style="font-size: xx-large; font-weight: 400; color: #ffbd5a;"><span
-                                    id="risk_reward"></span></td>
+                                    id="risk_reward">------</span></td>
                            </tr>
                         </table>
                      </div>
@@ -327,7 +328,7 @@
                            </tr>
                            <tr>
                               <td class="answer_td" style="font-size: xx-large; font-weight: 400;"><span
-                                    id="avg_pnl"></span></td>
+                                    id="avg_pnl">------</span></td>
                            </tr>
                         </table>
                      </div>
@@ -336,9 +337,13 @@
             </div>
 
             <!-- Chart & Table -->
-            <div class="row mx-2 mb-2" id="chart_and_table">
+            <div class="row mx-2 mb-2" id="chart_and_table" style="display: none;">
                <div class="col-lg-12 bg-color rounded text-light" id="Table_view">
-                  <div class="my-4 row individual_day_data" style="display: block;">
+                  <div class="mb-4 row individual_day_data" style="display: block;">
+                     <div class="d-flex">
+                        <div class="p-2 w-100"><h3 class="mt-2 text-center">Trade List</h3></div>
+                        <div class="p-2 flex-shrink-1 d-flex align-items-center"><i class="fa-solid fa-rotate-right"></i></div>
+                      </div>
                      <div class="px-0 text-center bg-color1 rounded col" style="width:100%; overflow-x:auto">
                         <table class="mx-0 my-0 px-0" style="font-size: 12px; font-weight: bold;" id="dataTable">
                            <thead class="py-2" style="color:#a9fff8">
@@ -360,11 +365,13 @@
                      </div>
                   </div>
                </div>
-               <div class="mt-2 col-lg-6 bg-color rounded px-0" id="bar_chart">
+               <div class="mt-2 col-lg-4 bg-color rounded px-0" id="bar_chart">
+                  <h3 class="mt-2 text-center text-light">Day-Wise Breakup</h3>
                   <div id="bar_chart_apexchart" style="padding: 0.5rem;"></div>
                </div>
-               <div class="ms-2 mt-2 col-lg bg-color rounded px-0" id="winner_losser">
-                  winner Losser
+               <div class="ms-2 mt-2 col-lg bg-color rounded px-0" id="winner_losser1">
+                  <h3 class="mt-2 text-center text-light">Monthly Breakup</h3>
+                  <div id="bar_chart_apexchart1" style="padding: 0.5rem;"></div>
                </div>
             </div>
 
