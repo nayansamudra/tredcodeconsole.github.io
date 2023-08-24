@@ -403,8 +403,27 @@ input[type="radio"]:checked:after {
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
+  .selected_range table tbody tr td:nth-child(1) {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+  }
+
   .answer_td {
     font-size: 20px !important;
+  }
+
+  .selected_range .bg-color1.rounded.col.mx-2 {
+    margin-left: 0.25rem !important;
+    margin-right: 0.25rem !important;
+  }
+
+  .mb-3.row.selected_range {
+    margin-bottom: 0.5rem !important;
+  }
+
+  #All_stats {
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
   }
 }
 
@@ -415,19 +434,29 @@ input[type="radio"]:checked:after {
 }
 
 @media (max-width: 768px) {
+  .selected_range table tbody tr td:nth-child(1) {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+  }
   .answer_td {
     font-size: 20px !important;
   }
 }
 
 @media (max-width: 576px) {
-  .answer_td {
-    font-size: 12px !important;
+
+  .selected_range .bg-color1.rounded.col.mx-2 {
+    margin-left: 0.25rem !important;
+    margin-right: 0.25rem !important;
   }
 
-  .selected_range table tbody tr td:nth-child(1) {
-    font-size: 12px !important;
-    font-weight: 400 !important;
+  .mb-3.row.selected_range {
+    margin-bottom: 0.5rem !important;
+  }
+
+  #All_stats {
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
   }
 }
 
@@ -438,11 +467,12 @@ input[type="radio"]:checked:after {
   }
 }
 
-table#dataTable tr:hover {
+table#dataTable tr:hover,
+table#Monthly_dataTable tr:hover {
   background-color: #3d3d3d !important;
 }
 
-table#dataTable {
+table#dataTable, table#Monthly_dataTable{
   font-size: 14px !important;
   font-weight: 500 !important;
 }
@@ -477,11 +507,39 @@ table#dataTable tr td:nth-child(10) {
 }
 
 @media (max-width: 992px) {
-  table#dataTable tr {
+  table#dataTable tr,
+  table#Monthly_dataTable tr {
     width: 1000px !important;
   }
 }
 
 table#dataTable tr {
   border-radius: 10px !important;
+}
+table#Monthly_dataTable tr {
+  border-radius: 10px !important;
+}
+
+@media (min-width: 576px) {
+  #For_mobile_view {
+    display: none !important;
+  }
+
+  .Laptop_view {
+    display: block !important;
+  }
+}
+
+@media (max-width: 576px) {
+  #For_mobile_view {
+    display: flex !important;
+  }
+
+  .Laptop_view {
+    display: none !important;
+  }
+}
+
+.data_Table_1, .bar_chart {
+  cursor: pointer;
 }

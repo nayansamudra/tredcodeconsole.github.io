@@ -142,7 +142,7 @@ var gcObject = {
             evt.date.getDate() == e.datejs.getDate()
           ) {
             cell.addClass("event");
-            var event = $(`<div class="gc-event ${evt.className}">${evt.eventName}</div>`);
+            var event = $(`<div class="gc-event ${evt.className}" title="${evt.titleName}">${evt.eventName}</div>`);
             dayStyle = "color:" + (evt.dateColor || "inherit");
             // event.on("click", function (e) {
             //   console.log(e,evt);
