@@ -195,208 +195,15 @@
                </div>
             </div>
 
-            <!-- Calendar HeatMap-->
+            <!-- Calendar HeatMap (TradeBook)-->
             <div class="row my-2 py-2 bg-color rounded">
-               <div class="mt-3 col calender_heatmap">
+               <div class="mt-0 col calender_heatmap">
                   <div id="CalendarHeatmap"></div>
                </div>
             </div>
 
-            <!-- 1 month Calendar detail view and All Stats-->
-            <div class="row mx-2 mb-2" id="Bottom_Part">
-               <div class="col-lg-5 bg-color rounded px-0" id="one_month_calendar">
-                  <div id="calendar" style="padding: 0.5rem;"></div>
-               </div>
-               <div class="ms-2 col-lg bg-color rounded text-light" id="All_stats">
-                  <h3 class="mt-2 text-center">Statistics</h3>
-                  <div class="my-3 px-2 text-center selected_range" style="color: #ffbd5a;">
-                     <span id="All_stats_Entry_date"
-                        style="font-size: x-large; font-weight: 500; color: #fff;">------</span>
-                     &nbsp;to&nbsp;
-                     <span id="All_stats_Exit_date"
-                        style="font-size: x-large; font-weight: 500; color: #fff;">------</span>
-                  </div>
-                  <div class="mb-3 row selected_range">
-                     <div class="px-0 text-center bg-color1 rounded col mx-2">
-                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
-                           <tr>
-                              <td style="font-size: large; font-weight: bold;">Total P&L
-                                 <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Total P&L"><i
-                                       class="fa-solid fa-circle-info"></i></span>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td class="answer_td" style="font-size: xx-large; font-weight: 400;"><span
-                                    id="total_profits">------</span></td>
-                           </tr>
-                        </table>
-                     </div>
-                     <div class="px-0 text-center bg-color1 rounded col mx-2">
-                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
-                           <tr>
-                              <td style="font-size: large; font-weight: bold;">Total Trades <span
-                                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Total Trades"><i
-                                       class="fa-solid fa-circle-info"></i></span></td>
-                           </tr>
-                           <tr>
-                              <td class="answer_td" style="font-size: xx-large; font-weight: 400; color: #ffbd5a;"><span
-                                    id="total_trades">------</span></td>
-                           </tr>
-                        </table>
-                     </div>
-                     <div class="Laptop_view px-0 text-center bg-color1 rounded col mx-2">
-                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
-                           <tr>
-                              <td style="font-size: large; font-weight: bold;">Biggest Win <span
-                                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Biggest Win"><i
-                                       class="fa-solid fa-circle-info"></i></span></td>
-                           </tr>
-                           <tr>
-                              <td class="answer_td"
-                                 style="font-size: xx-large; font-weight: 400; color: rgb(123, 219, 123);"><span
-                                    id="biggest_win">------</span></td>
-                           </tr>
-                        </table>
-                     </div>
-                     <div class="Laptop_view px-0 text-center bg-color1 rounded col mx-2">
-                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
-                           <tr>
-                              <td style="font-size: large; font-weight: bold;">Biggest Loss <span
-                                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Biggest Loss"><i
-                                       class="fa-solid fa-circle-info"></i></span></td>
-                           </tr>
-                           <tr>
-                              <td class="answer_td"
-                                 style="font-size: xx-large; font-weight: 400; color: rgb(252, 92, 93);"><span
-                                    id="biggest_loss">------</span></td>
-                           </tr>
-                        </table>
-                     </div>
-                  </div>
-                  <div class="mb-3 row selected_range" id="For_mobile_view">
-                     <div class="px-0 text-center bg-color1 rounded col mx-2">
-                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
-                           <tr>
-                              <td style="font-size: large; font-weight: bold;">Biggest Win <span
-                                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Biggest Win"><i
-                                       class="fa-solid fa-circle-info"></i></span></td>
-                           </tr>
-                           <tr>
-                              <td class="answer_td"
-                                 style="font-size: xx-large; font-weight: 400; color: rgb(123, 219, 123);"><span
-                                    id="biggest_win1">------</span></td>
-                           </tr>
-                        </table>
-                     </div>
-                     <div class="px-0 text-center bg-color1 rounded col mx-2">
-                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
-                           <tr>
-                              <td style="font-size: large; font-weight: bold;">Biggest Loss <span
-                                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Biggest Loss"><i
-                                       class="fa-solid fa-circle-info"></i></span></td>
-                           </tr>
-                           <tr>
-                              <td class="answer_td"
-                                 style="font-size: xx-large; font-weight: 400; color: rgb(252, 92, 93);"><span
-                                    id="biggest_loss1">------</span></td>
-                           </tr>
-                        </table>
-                     </div>
-                  </div>
-                  <div class="mb-3 row selected_range">
-                     <div class="px-0 text-center bg-color1 rounded col mx-2">
-                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
-                           <tr>
-                              <td style="font-size: large; font-weight: bold;">Avg. Winner <span
-                                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Avg. Winner"><i
-                                       class="fa-solid fa-circle-info"></i></span></td>
-                           </tr>
-                           <tr>
-                              <td class="answer_td"
-                                 style="font-size: xx-large; font-weight: 400; color: rgb(123, 219, 123)"><span
-                                    id="avg_winner">------</span></td>
-                           </tr>
-                        </table>
-                     </div>
-                     <div class="px-0 text-center bg-color1 rounded col mx-2">
-                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
-                           <tr>
-                              <td style="font-size: large; font-weight: bold;">Avg. Losser <span
-                                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Avg. Losser"><i
-                                       class="fa-solid fa-circle-info"></i></span></td>
-                           </tr>
-                           <tr>
-                              <td class="answer_td"
-                                 style="font-size: xx-large; font-weight: 400; color: rgb(252, 92, 93);"><span
-                                    id="avg_losser">------</span></td>
-                           </tr>
-                        </table>
-                     </div>
-                  </div>
-                  <div class="mb-3 row selected_range">
-                     <div class="px-0 text-center bg-color1 rounded col mx-2">
-                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
-                           <tr>
-                              <td style="font-size: large; font-weight: bold;">Risk to Reward <span
-                                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Risk to Reward"><i
-                                       class="fa-solid fa-circle-info"></i></span></td>
-                           </tr>
-                           <tr>
-                              <td class="answer_td" style="font-size: xx-large; font-weight: 400; color: #ffbd5a;"><span
-                                    id="risk_reward">------</span></td>
-                           </tr>
-                        </table>
-                     </div>
-                     <div class="px-0 text-center bg-color1 rounded col mx-2">
-                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
-                           <tr>
-                              <td style="font-size: large; font-weight: bold;">Avg. P&L <span data-bs-toggle="tooltip"
-                                    data-bs-placement="top" data-bs-title="Avg. P&L"><i
-                                       class="fa-solid fa-circle-info"></i></span></td>
-                           </tr>
-                           <tr>
-                              <td class="answer_td" style="font-size: xx-large; font-weight: 400;"><span
-                                    id="avg_pnl">------</span></td>
-                           </tr>
-                        </table>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <!-- Chart & Table -->
-            <div class="row mx-2 mb-2" id="chart_and_table" style="display: none;">
-               <div class="col-lg-12 bg-color rounded text-light" id="Table_view">
-                  <div class="mb-4 row individual_day_data" style="display: block;">
-                     <div class="d-flex">
-                        <div class="p-2 w-100">
-                           <h3 class="mt-2 text-center">Trade List</h3>
-                        </div>
-                        <div class="p-2 flex-shrink-1 d-flex align-items-center"><i
-                              class="fa-solid fa-rotate-right data_Table_1"></i></div>
-                     </div>
-                     <div class="px-0 text-center bg-color1 rounded col" style="width:100%; overflow-x:auto">
-                        <table class="mx-0 my-0 px-0" style="font-size: 12px; font-weight: bold;" id="dataTable">
-                           <thead class="py-2" style="color:#a9fff8">
-                              <tr>
-                                 <td>Status</td>
-                                 <td>Entry Time</td>
-                                 <td>Exit Time</td>
-                                 <td>Symbol</td>
-                                 <td>Entry</td>
-                                 <td>Exit</td>
-                                 <td>Quantity</td>
-                                 <td>Type</td>
-                                 <td>Return</td>
-                                 <td>Action</td>
-                              </tr>
-                           </thead>
-                           <tbody class="px-2" style="background-color: #1c1c1c;"></tbody>
-                        </table>
-                     </div>
-                  </div>
-               </div>
-               <!-- Equity Curve -->
+            <!-- Equity Curve -->
+            <div class="row mx-2 mb-2" id="equity_curve_container" style="display: none;">
                <div class="col-lg-12 mt-2 bg-color rounded" id="Equity_curve_div">
                   <div class="px-0 py-0 col-12">
                      <div class="px-0 container-fluid">
@@ -431,6 +238,182 @@
                      </div>
                   </div>
                </div>
+            </div>
+
+            <!-- 1 month Calendar detail view and All Stats (Monthly - Statistics)-->
+            <div class="row mx-2 mb-2" id="Bottom_Part">
+               <div class="col-lg-5 bg-color rounded px-0" id="one_month_calendar">
+                  <div id="calendar" style="padding: 0.5rem;"></div>
+               </div>
+               <div class="ms-2 col-lg bg-color rounded text-light" id="All_stats">
+                  <h3 class="mt-2 text-center">Statistics</h3>
+                  <div class="my-3 px-2 text-center selected_range" style="color: #ffbd5a;">
+                     <span id="All_stats_Entry_date"
+                        style="font-size: x-large; font-weight: 500; color: #fff;">------</span>
+                     &nbsp;to&nbsp;
+                     <span id="All_stats_Exit_date"
+                        style="font-size: x-large; font-weight: 500; color: #fff;">------</span>
+                  </div>
+                  <div class="mb-3 row selected_range">
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Total P&L
+                                 <span data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-title="Total net profit and loss in the selected range"><i
+                                       class="fa-solid fa-circle-info"></i></span>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td" style="font-size: xx-large; font-weight: 400;"><span
+                                    id="total_profits">------</span></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Total Trades <span
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-title="It shows the total no of trades you have taken in that selected range"><i
+                                       class="fa-solid fa-circle-info"></i></span></td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td" style="font-size: xx-large; font-weight: 400; color: #ffbd5a;"><span
+                                    id="total_trades">------</span></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="Laptop_view px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Biggest Win <span
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-title="Highest amount of profit earned in a single trade in that selected range"><i
+                                       class="fa-solid fa-circle-info"></i></span></td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td"
+                                 style="font-size: xx-large; font-weight: 400; color: rgb(123, 219, 123);"><span
+                                    id="biggest_win">------</span></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="Laptop_view px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Biggest Loss <span
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-title="Highest amount of loss incurred in a single trade in that selected range"><i
+                                       class="fa-solid fa-circle-info"></i></span></td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td"
+                                 style="font-size: xx-large; font-weight: 400; color: rgb(252, 92, 93);"><span
+                                    id="biggest_loss">------</span></td>
+                           </tr>
+                        </table>
+                     </div>
+                  </div>
+                  <div class="mb-3 row selected_range" id="For_mobile_view">
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Biggest Win <span
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-title="Highest amount of profit earned in a single trade in that selected range"><i
+                                       class="fa-solid fa-circle-info"></i></span></td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td"
+                                 style="font-size: xx-large; font-weight: 400; color: rgb(123, 219, 123);"><span
+                                    id="biggest_win1">------</span></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Biggest Loss <span
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-title="Highest amount of loss incurred in a single trade in that selected range"><i
+                                       class="fa-solid fa-circle-info"></i></span></td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td"
+                                 style="font-size: xx-large; font-weight: 400; color: rgb(252, 92, 93);"><span
+                                    id="biggest_loss1">------</span></td>
+                           </tr>
+                        </table>
+                     </div>
+                  </div>
+                  <div class="mb-3 row selected_range">
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Avg. Winner <span
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-title="sum of all the profits making trades / no. of profit-making trades, in that selected range"><i
+                                       class="fa-solid fa-circle-info"></i></span></td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td"
+                                 style="font-size: xx-large; font-weight: 400; color: rgb(123, 219, 123)"><span
+                                    id="avg_winner">------</span></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Avg. Losser <span
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-title="sum of all the loss-making trades / no. of loss-making trades, in that selected range"><i
+                                       class="fa-solid fa-circle-info"></i></span></td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td"
+                                 style="font-size: xx-large; font-weight: 400; color: rgb(252, 92, 93);"><span
+                                    id="avg_losser">------</span></td>
+                           </tr>
+                        </table>
+                     </div>
+                  </div>
+                  <div class="mb-3 row selected_range">
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Risk to Reward <span
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-title="Avg. profit made for every 1 rupee loss. If reward is less than 1, that means our losses are bigger than the profits"><i
+                                       class="fa-solid fa-circle-info"></i></span></td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td" style="font-size: xx-large; font-weight: 400; color: #ffbd5a;"><span
+                                    id="risk_reward">------</span></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="px-0 text-center bg-color1 rounded col mx-2">
+                        <table class="mx-0 my-2 px-0" style="font-size: x-large; font-weight: bold;">
+                           <tr>
+                              <td style="font-size: large; font-weight: bold;">Avg. P&L <span data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    data-bs-title="Total net profit or Loss divided by total no. of trades"><i
+                                       class="fa-solid fa-circle-info"></i></span></td>
+                           </tr>
+                           <tr>
+                              <td class="answer_td" style="font-size: xx-large; font-weight: 400;"><span
+                                    id="avg_pnl">------</span></td>
+                           </tr>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Chart (day wise chart) & Table (Montlty table)-->
+            <div class="row mx-2 mb-2" id="day_chart_and_monthly_table" style="display: none;">
                <div class="mt-2 col-lg-3 bg-color rounded px-0" id="bar_chart">
                   <h3 class="mt-2 text-center text-light">Day-Wise Breakup</h3>
                   <div id="bar_chart_apexchart" style="padding: 0.5rem;"></div>
@@ -466,7 +449,41 @@
                </div>
             </div>
 
-            <!-- Chart & Table -->
+            <!-- Table (TradeList)-->
+            <div class="row mx-2 mb-2" id="tradelist_table" style="display: none;">
+               <div class="col-lg-12 bg-color rounded text-light" id="Table_view">
+                  <div class="mb-4 row individual_day_data" style="display: block;">
+                     <div class="d-flex">
+                        <div class="p-2 w-100">
+                           <h3 class="mt-2 text-center">Trade List</h3>
+                        </div>
+                        <div class="p-2 flex-shrink-1 d-flex align-items-center"><i
+                              class="fa-solid fa-rotate-right data_Table_1"></i></div>
+                     </div>
+                     <div class="px-0 text-center bg-color1 rounded col" style="width:100%; overflow-x:auto">
+                        <table class="mx-0 my-0 px-0" style="font-size: 12px; font-weight: bold;" id="dataTable">
+                           <thead class="py-2" style="color:#a9fff8">
+                              <tr>
+                                 <td>Status</td>
+                                 <td>Entry Time</td>
+                                 <td>Exit Time</td>
+                                 <td>Symbol</td>
+                                 <td>Entry</td>
+                                 <td>Exit</td>
+                                 <td>Quantity</td>
+                                 <td>Type</td>
+                                 <td>Return</td>
+                                 <td>Action</td>
+                              </tr>
+                           </thead>
+                           <tbody class="px-2" style="background-color: #1c1c1c;"></tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Top Winner and Top Losser -->
             <div class="row mx-2 mb-2" id="Top_winner_losser">
                <div class="mt-2 col-lg-6 bg-color rounded px-0" id="Top_Winner">
                   <h3 class="mt-2 text-center text-light">Top Winner</h3>
@@ -643,8 +660,8 @@
          <div class="modal-content bg-color border-0">
             <div class="modal-header border-bottom-0">
                <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Add Trade Inputs:</h1>
-               <button type="button" id="add_n_update_trade_close" class="btn-close bg-white" data-bs-dismiss="modal"
-                  aria-label="Close"></button>
+               <button type="button" id="add_n_update_trade_close" class="btn-close bg-white bg-faint"
+                  data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body bg-faint">
                <table>
@@ -659,58 +676,99 @@
                   </tr>
                   <tr>
                      <td>Entry Date & Time:<span class="ps-1" style="font-size: 20px; color:#fff">*</span></td>
-                     <td><input type="datetime-local" class="date_time" id="Entry_date_time" name="Entry_date_time"
-                           required></td>
+                     <td>
+                        <span data-bs-toggle="tooltip" data-bs-placement="top"
+                           data-bs-title="Enter the date and time when you initiated the trade."><i
+                              class="fa-solid fa-circle-info"></i></span>
+                        <input type="datetime-local" class="date_time" id="Entry_date_time" name="Entry_date_time"
+                           required>
+                     </td>
                   </tr>
                   <tr>
                      <td>Exit Date & Time:<span class="ps-1" style="font-size: 20px; color:#fff">*</span></td>
-                     <td><input type="datetime-local" class="date_time" id="Exit_date_time" name="Exit_date_time"
-                           required></td>
+                     <td><span data-bs-toggle="tooltip" data-bs-placement="top"
+                           data-bs-title="Enter the date and time when you exited the trade."><i
+                              class="fa-solid fa-circle-info"></i></span>
+                        <input type="datetime-local" class="date_time" id="Exit_date_time" name="Exit_date_time"
+                           required>
+                     </td>
                   </tr>
                   <tr>
                      <td>Symbol/Ticker:<span class="ps-1" style="font-size: 20px; color:#fff">*</span></td>
-                     <td>
+                     <td><span data-bs-toggle="tooltip" data-bs-placement="top"
+                           data-bs-title="Enter the name of the stock, option ticker for the trade"><i
+                              class="fa-solid fa-circle-info"></i></span>
                         <input type="text" id="Symbol_Ticker" name="Symbol_Ticker" placeholder="Type here..."
                            class="placeholder-color" required>
                      </td>
                   </tr>
                   <tr>
                      <td>Entry Price:<span class="ps-1" style="font-size: 20px; color:#fff">*</span></td>
-                     <td><input type="number" id="Entry_price" name="Entry_price" required></td>
+                     <td><span data-bs-toggle="tooltip" data-bs-placement="top"
+                           data-bs-title="The price at which you entered the trade"><i
+                              class="fa-solid fa-circle-info"></i></span>
+                        <input type="number" id="Entry_price" name="Entry_price" required>
+                     </td>
                   </tr>
                   <tr>
                      <td>Exit Price:<span class="ps-1" style="font-size: 20px; color:#fff">*</span></td>
-                     <td><input type="number" id="Exit_price" name="Exit_price" required></td>
+                     <td><span data-bs-toggle="tooltip" data-bs-placement="top"
+                           data-bs-title="The price at which you exited the trade"><i
+                              class="fa-solid fa-circle-info"></i></span>
+                        <input type="number" id="Exit_price" name="Exit_price" required>
+                     </td>
                   </tr>
                   <tr>
                      <td>Quantity:<span class="ps-1" style="font-size: 20px; color:#fff">*</span></td>
-                     <td><input type="number" id="Quantity" name="Quantity" required></td>
+                     <td>
+                        <span data-bs-toggle="tooltip" data-bs-placement="top"
+                           data-bs-title="Don’t use negative sign, it will automatically assign based on long and short trade type"><i
+                              class="fa-solid fa-circle-info"></i></span>
+                        <input type="number" id="Quantity" name="Quantity" required>
+                     </td>
                   </tr>
                   <tr>
                      <td>How did you find the trade ?</td>
-                     <td><textarea rows="3" id="Find_Trade" name="Find_Trade" placeholder="Only upto 300 character"
-                           class="placeholder-color"></textarea></td>
+                     <td class="d-flex align-items-center"><span data-bs-toggle="tooltip" data-bs-placement="top"
+                           data-bs-title="Explain here, what are your finding before taking trades. Why you took that trade ?"><i
+                              class="fa-solid fa-circle-info"></i></span>&nbsp;
+                        <textarea rows="3" id="Find_Trade" name="Find_Trade" placeholder="Only upto 300 character"
+                           class="placeholder-color"></textarea>
+                     </td>
                   </tr>
                   <tr>
                      <td>Entry Reason:</td>
-                     <td><textarea rows="3" id="Entry_reason" name="Entry_reason" placeholder="Only upto 300 character"
-                           class="placeholder-color"></textarea></td>
+                     <td class="d-flex align-items-center"><span data-bs-toggle="tooltip" data-bs-placement="top"
+                           data-bs-title="After find the trade, why you entered at that specific time. What was the trigger to enter where you entered?"><i
+                              class="fa-solid fa-circle-info"></i></span>&nbsp;
+                        <textarea rows="3" id="Entry_reason" name="Entry_reason" placeholder="Only upto 300 character"
+                           class="placeholder-color"></textarea>
+                     </td>
                   </tr>
                   <tr>
                      <td>Exit Reason:</td>
-                     <td><textarea rows="3" id="Exit_reason" name="Exit_reason" placeholder="Only upto 300 character"
-                           class="placeholder-color"></textarea></td>
+                     <td class="d-flex align-items-center"><span data-bs-toggle="tooltip" data-bs-placement="top"
+                           data-bs-title="After took the trade, why you exited at that specific time. What was the trigger to exit where you exited?"><i
+                              class="fa-solid fa-circle-info"></i></span>&nbsp;
+                        <textarea rows="3" id="Exit_reason" name="Exit_reason" placeholder="Only upto 300 character"
+                           class="placeholder-color"></textarea>
+                     </td>
                   </tr>
                   <tr>
                      <td>Mistakes made / Lessons learned</td>
-                     <td><textarea rows="3" id="Mistakes" name="Mistakes" placeholder="Only upto 300 character"
-                           class="placeholder-color"></textarea></td>
+                     <td class="d-flex align-items-center"><span data-bs-toggle="tooltip" data-bs-placement="top"
+                           data-bs-title="What mistakes you made, what you learned from that and what process will you follow to avoid such mistakes in future ?"><i
+                              class="fa-solid fa-circle-info"></i></span>&nbsp;
+                        <textarea rows="3" id="Mistakes" name="Mistakes" placeholder="Only upto 300 character"
+                           class="placeholder-color"></textarea>
+                     </td>
                   </tr>
                </table>
             </div>
             <div class="modal-footer border-top-0">
-               <button type="button" class="btn btn-outline-light" id="add_trade_submit">Submit</button>
-               <button type="button" class="btn btn-outline-light d-none" id="update_trade_submit">Update</button>
+               <button type="button" class="btn btn-secondary bg-faint" data-bs-dismiss="modal">Close</button>
+               <button type="button" class="btn btn-secondary bg-faint" id="add_trade_submit">Submit</button>
+               <button type="button" class="btn btn-secondary d-none bg-faint" id="update_trade_submit">Update</button>
             </div>
          </div>
       </div>
@@ -752,8 +810,6 @@
          </div>
       </div>
    </div>
-
-   <!-- Toast - (For Alerts and Confirm) -->
 
 
 

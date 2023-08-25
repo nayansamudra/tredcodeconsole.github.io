@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+body {
+  cursor: context-menu;
+}
+
 .bg-color {
   background: #1c1c1c;
 }
@@ -84,17 +88,14 @@ Calender HeatMap Plugin
   color: #fff !important; /* Change to your desired color */
 }
 
-/* @media (max-width: 450px) {
-  .ch-week-labels {
-    display: none !important;
-  }
-} */
-
-/*
-.ch-week, .ch-day-labels --> Width
-.ch-day --> width and height
-.ch-day-label --> line-height (SAME AS .ch-week, .ch-day-labels WIDTH)
-*/
+.ch-title {
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 28px !important;
+  color: #fff !important;
+  line-height: 136.02% !important;
+  min-width: 220px !important;
+}
 
 /* -------------- 
   Modal Form 
@@ -144,7 +145,7 @@ input::-webkit-inner-spin-button {
   left: 0;
   right: 0;
   border-radius: 30px;
-  box-shadow: 0 0 0 2px #6bd368, 0 0 4px #6bd368;
+  box-shadow: 0 0 0 2px #3caf39, 0 0 4px #3caf39;
   cursor: pointer;
   border: 4px solid transparent;
   overflow: hidden;
@@ -170,7 +171,7 @@ input::-webkit-inner-spin-button {
   content: "";
   width: 100%;
   height: 100%;
-  background-color: #6bd368;
+  background-color: #3caf39;
   border-radius: 30px;
   transform: translateX(-35px);
   transition: 0.2s;
@@ -236,7 +237,7 @@ input[type="date"]:disabled {
   }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 467px) {
   input[type="text"],
   input[type="number"],
   input[type="datetime-local"],
@@ -244,21 +245,35 @@ input[type="date"]:disabled {
   textarea {
     width: 155px;
   }
-}
-
-@media (max-width: 370px) {
-  .modal-body td:first-child {
-    width: 140px !important;
-  }
   .modal-body {
     padding-left: 0.5rem !important;
     padding-right: 0.25rem !important;
   }
 }
 
-@media (max-width: 340px) {
+@media (max-width: 400px) {
   .modal-body td:first-child {
-    width: 110px !important;
+    width: 165px !important;
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .modal-body td:first-child {
+    width: 140px !important;
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .modal-body td:first-child {
+    width: 130px !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .modal-body td:first-child {
+    width: 120px !important;
   }
 
   .modal-body td {
@@ -331,10 +346,10 @@ input[type="radio"]:checked:after {
   border-radius: 50px;
 }
 #exampleModal1 .modal-header {
-  background-color: #6bd368;
+  background-color: #3caf39;
 }
 #exampleModal1 .modal-footer {
-  background-color: #6bd368;
+  background-color: #3caf39;
 }
 
 .modal-lg {
@@ -592,4 +607,9 @@ table#Monthly_dataTable tr {
 
 #toast-delete .border-top {
   border-top: 1px solid #712525 !important;
+}
+
+#exampleModal1 .btn-close {
+  --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") !important;
+  --bs-btn-close-opacity: 1 !important;
 }

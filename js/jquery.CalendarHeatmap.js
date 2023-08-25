@@ -511,9 +511,9 @@
                         if(obj.count >= 0) {
                             var title = "₹" + obj.count + " on ";
                         } else {
-                            var title = "-₹" + Math.abs(obj.count) + " on ";
+                            var title = "-₹" + Math.abs(obj.count) + ", ";
                         }
-                        title += this._dateFormat(obj.date, "MMM D, YYYY");
+                        title += this._dateFormat(obj.date, "DD-MM-YY");
                         title += ', ' + obj.no_of_trades + ' trades';
 
                         var color = "";

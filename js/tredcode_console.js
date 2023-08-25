@@ -106,8 +106,8 @@ const update_trade = (trade_id1, entry_ts1, exit_ts1, data1) => {
 
     $('#add_trade').click()
 
-    $('#update_trade_submit').removeClass().addClass('btn btn-outline-light')
-    $('#add_trade_submit').removeClass().addClass('btn btn-outline-light d-none')
+    $('#update_trade_submit').removeClass().addClass('btn btn-secondary bg-faint')
+    $('#add_trade_submit').removeClass().addClass('btn btn-secondary bg-faint d-none')
 
     $('#exampleModal1 .modal-title').text('Update Trade Inputs:')
 
@@ -135,8 +135,8 @@ const update_trade = (trade_id1, entry_ts1, exit_ts1, data1) => {
 
     if (data1['trade_type'] == 'Long') {
         $('#checkbox').prop('checked', false);
-        $('#exampleModal1 .modal-header').css('background-color', '#6bd368')
-        $('#exampleModal1 .modal-footer').css('background-color', '#6bd368')
+        $('#exampleModal1 .modal-header').css('background-color', '#3caf39')
+        $('#exampleModal1 .modal-footer').css('background-color', '#3caf39')
     } else if (data1['trade_type'] == 'Short') {
         $('#checkbox').prop('checked', true);
         $('#exampleModal1 .modal-header').css('background-color', '#fc5c5d')
@@ -243,8 +243,8 @@ const update_trade_API = (trade_id) => {
                 }, 3000);
             }
 
-            $('#update_trade_submit').removeClass().addClass('btn btn-outline-light d-none')
-            $('#add_trade_submit').removeClass().addClass('btn btn-outline-light')
+            $('#update_trade_submit').removeClass().addClass('btn btn-secondary bg-faint d-none')
+            $('#add_trade_submit').removeClass().addClass('btn btn-secondary bg-faint')
 
             $('#exampleModal1 .modal-title').text('Add Trade Inputs:')
 
@@ -293,11 +293,20 @@ const view_trade = () => {
             if (status == "success") {
                 $('#view_trade_close').click()
                 if (view_trade_data.length != 0) {
+
+                    x_axis = []
+                    y_axis = []
+                
+                    x_axis1 = []
+                    y_axis1 = []
+
                     print_view_data()
                     all_stats()
                     dataTable()
                     dataTable_monthly()
-                    $('#chart_and_table').show()
+                    $('#equity_curve_container').show()
+                    $('#day_chart_and_monthly_table').show()
+                    $('#tradelist_table').show()
                     winner_losser()
                 } else {
                     // alert('No Data / Empty Array');
@@ -579,6 +588,20 @@ const all_stats = () => {
         } else if (entry.count < 0) {
             lossMakingCount += entry.no_of_trades;
             sumLossMakingTrades += entry.count;
+        }
+    }
+
+    result.Biggest_Winner = 0
+    result.Biggest_Loss = 0
+
+    for (var i = 0; i < print_data.length; i++) {
+        var entry = print_data[i];
+
+        if (entry.count > result.Biggest_Winner) {
+            result.Biggest_Winner = entry.count;
+        }
+        if (entry.count < result.Biggest_Loss) {
+            result.Biggest_Loss = entry.count;
         }
     }
 
@@ -865,6 +888,8 @@ const dataTable_monthly = () => {
 
 
 }
+
+
 
 
 // All array value are +ve, -ve or mix
@@ -1501,7 +1526,7 @@ $(document).ready(function () {
 
     // ------- Calendar HeatMap
     $("#CalendarHeatmap").CalendarHeatmap([], {
-        title: "",
+        title: "Tradebook",
         months: 12,
         labels: {
             days: true,
@@ -1816,8 +1841,8 @@ $(document).on("click", ".slider", function () {
         // $('#long_text').css('color', '#6bd368');
         $('#long_text').css('color', '#fff');
         $('#short_text').css('color', '#fff');
-        $('#exampleModal1 .modal-header').css('background-color', '#6bd368')
-        $('#exampleModal1 .modal-footer').css('background-color', '#6bd368')
+        $('#exampleModal1 .modal-header').css('background-color', '#3caf39')
+        $('#exampleModal1 .modal-footer').css('background-color', '#3caf39')
     } else {
         console.log('not checked');
         $('#long_text').css('color', '#fff');
@@ -1829,8 +1854,8 @@ $(document).on("click", ".slider", function () {
 })
 
 $(document).on("click", "#add_trade", function () {
-    $('#update_trade_submit').removeClass().addClass('btn btn-outline-light d-none')
-    $('#add_trade_submit').removeClass().addClass('btn btn-outline-light')
+    $('#update_trade_submit').removeClass().addClass('btn btn-secondary bg-faint d-none')
+    $('#add_trade_submit').removeClass().addClass('btn btn-secondary bg-faint')
     $('#exampleModal1 .modal-title').text('Add Trade Inputs:')
 
     $('#checkbox').prop('checked', false);
@@ -1838,8 +1863,8 @@ $(document).on("click", "#add_trade", function () {
     $("input[type='text']").val("");
     $("input[type='number']").val("");
     $("textarea").val("");
-    $('#exampleModal1 .modal-header').css('background-color', '#6bd368')
-    $('#exampleModal1 .modal-footer').css('background-color', '#6bd368')
+    $('#exampleModal1 .modal-header').css('background-color', '#3caf39')
+    $('#exampleModal1 .modal-footer').css('background-color', '#3caf39')
 })
 
 //------- character upto 300 only
