@@ -444,7 +444,6 @@ input[type="radio"]:checked:after {
 }
 
 @media (max-width: 576px) {
-
   .selected_range .bg-color1.rounded.col.mx-2 {
     margin-left: 0.25rem !important;
     margin-right: 0.25rem !important;
@@ -461,7 +460,9 @@ input[type="radio"]:checked:after {
 }
 
 @media (max-width: 992px) {
-  #All_stats {
+  #All_stats,
+  #monthly_breakup,
+  #Top_Losser {
     margin-left: 0 !important;
     margin-top: 0.5rem !important;
   }
@@ -472,7 +473,8 @@ table#Monthly_dataTable tr:hover {
   background-color: #3d3d3d !important;
 }
 
-table#dataTable, table#Monthly_dataTable{
+table#dataTable,
+table#Monthly_dataTable {
   font-size: 14px !important;
   font-weight: 500 !important;
 }
@@ -511,6 +513,28 @@ table#dataTable tr td:nth-child(10) {
   table#Monthly_dataTable tr {
     width: 1000px !important;
   }
+
+  #monthly_breakup {
+    width: 100% !important;
+  }
+}
+
+#Monthly_dataTable thead,
+#Monthly_dataTable tbody {
+  width: 100% !important;
+  overflow-x: auto;
+}
+
+#Monthly_dataTable thead tr td,
+#Monthly_dataTable tbody tr td {
+  width: 60px !important;
+}
+
+@media (max-width: 992px) {
+  #Monthly_dataTable thead tr td,
+  #Monthly_dataTable tbody tr td {
+    width: 72px !important;
+  }
 }
 
 table#dataTable tr {
@@ -540,6 +564,32 @@ table#Monthly_dataTable tr {
   }
 }
 
-.data_Table_1, .bar_chart {
+.data_Table_1,
+.bar_chart {
   cursor: pointer;
+}
+
+/*------------- Toast CSS -----------*/
+.toast.align-items-center.bg-warning {
+  background-color: #fdcd85 !important;
+}
+.toast.align-items-center.bg-success {
+  background-color: #8ed98e !important;
+}
+.toast.align-items-center.bg-danger {
+  background-color: #ff8a8a !important;
+}
+
+.toast.align-items-center.bg-warning.text-warning {
+  color: #885200 !important;
+}
+.toast.align-items-center.bg-success.text-success {
+  color: #257125 !important;
+}
+.toast.align-items-center.bg-danger.text-danger {
+  color: #712525 !important;
+}
+
+#toast-delete .border-top {
+  border-top: 1px solid #712525 !important;
 }

@@ -17,15 +17,31 @@ const add_trade = () => {
 
     // input validation
     if (entry_ts == "" || exit_ts == "" || symbol_Ticker == '' || entry_price == '' || exit_price == '' || quantity == '') {
-        alert("Please Enter all fields!");
-        // $('#exampleModal3').modal('show');
-        // $('#exampleModal3 .modal-body').text('Please Enter all fields');
+        // alert("Please Enter all fields!");
+        $('.toast-body_1').text('Please Enter all fields!')
+        $('#toast-alert').removeClass().addClass('toast align-items-center bg-warning text-warning')
+        toastList.forEach(toast => toast.show());
+        setTimeout(() => {
+            toastList.forEach(toast => toast.hide());
+        }, 3000);
         return;
     } else if (quantity == '0' || quantity == 0) {
-        alert("Quantity cannot be zero");
+        // alert("Quantity cannot be zero");
+        $('.toast-body_1').text('Quantity cannot be zero')
+        $('#toast-alert').removeClass().addClass('toast align-items-center bg-warning text-warning')
+        toastList.forEach(toast => toast.show());
+        setTimeout(() => {
+            toastList.forEach(toast => toast.hide());
+        }, 3000);
         return;
     } else if (exit_ts < entry_ts) {
-        alert("Exit Date should be greater than Entry Date");
+        // alert("Exit Date should be greater than Entry Date");
+        $('.toast-body_1').text('Exit Date should be greater than Entry Date')
+        $('#toast-alert').removeClass().addClass('toast align-items-center bg-warning text-warning')
+        toastList.forEach(toast => toast.show());
+        setTimeout(() => {
+            toastList.forEach(toast => toast.hide());
+        }, 3000);
         return;
     }
 
@@ -50,7 +66,13 @@ const add_trade = () => {
         { 'op': 'create', 'data': data },
         function (data, status) {
             if (data == "success") {
-                alert("Trade added Successfully!");
+                // alert("Trade added Successfully!");
+                $('.toast-body_1').text('Trade added Successfully!')
+                $('#toast-alert').removeClass().addClass('toast align-items-center bg-success text-success')
+                toastList.forEach(toast => toast.show());
+                setTimeout(() => {
+                    toastList.forEach(toast => toast.hide());
+                }, 3000);
 
                 $("input[type='datetime-local']").val("");
                 $("input[type='text']").val("");
@@ -59,7 +81,13 @@ const add_trade = () => {
 
                 view_trade()
             } else {
-                alert("Unable to add Trade");
+                // alert("Unable to add Trade");
+                $('.toast-body_1').text('Unable to add Trade')
+                $('#toast-alert').removeClass().addClass('toast align-items-center bg-danger text-danger')
+                toastList.forEach(toast => toast.show());
+                setTimeout(() => {
+                    toastList.forEach(toast => toast.hide());
+                }, 3000);
             }
         }
     ).fail(function (response) {
@@ -141,13 +169,31 @@ const update_trade_API = (trade_id) => {
 
     // input validation
     if (entry_ts == "" || exit_ts == "" || symbol_Ticker == '' || entry_price == '' || exit_price == '' || quantity == '') {
-        alert("Please Enter all fields!");
+        // alert("Please Enter all fields!");
+        $('.toast-body_1').text('Please Enter all fields!')
+        $('#toast-alert').removeClass().addClass('toast align-items-center bg-warning text-warning')
+        toastList.forEach(toast => toast.show());
+        setTimeout(() => {
+            toastList.forEach(toast => toast.hide());
+        }, 3000);
         return;
     } else if (quantity == '0' || quantity == 0) {
-        alert("Quantity cannot be zero");
+        // alert("Quantity cannot be zero");
+        $('.toast-body_1').text('Quantity cannot be zero')
+        $('#toast-alert').removeClass().addClass('toast align-items-center bg-warning text-warning')
+        toastList.forEach(toast => toast.show());
+        setTimeout(() => {
+            toastList.forEach(toast => toast.hide());
+        }, 3000);
         return;
     } else if (exit_ts < entry_ts) {
-        alert("Exit Date should be greater than Entry Date");
+        // alert("Exit Date should be greater than Entry Date");
+        $('.toast-body_1').text('Exit Date should be greater than Entry Date')
+        $('#toast-alert').removeClass().addClass('toast align-items-center bg-warning text-warning')
+        toastList.forEach(toast => toast.show());
+        setTimeout(() => {
+            toastList.forEach(toast => toast.hide());
+        }, 3000);
         return;
     }
 
@@ -173,7 +219,13 @@ const update_trade_API = (trade_id) => {
         { 'op': 'update', 'data': data },
         function (data, status) {
             if (data == "success") {
-                alert("Trade updated Successfully!");
+                // alert("Trade updated Successfully!");
+                $('.toast-body_1').text('Trade updated Successfully!')
+                $('#toast-alert').removeClass().addClass('toast align-items-center bg-success text-success')
+                toastList.forEach(toast => toast.show());
+                setTimeout(() => {
+                    toastList.forEach(toast => toast.hide());
+                }, 3000);
 
                 $("input[type='datetime-local']").val("");
                 $("input[type='text']").val("");
@@ -182,7 +234,13 @@ const update_trade_API = (trade_id) => {
 
                 view_trade()
             } else {
-                alert("Unable to update Trade");
+                // alert("Unable to update Trade");
+                $('.toast-body_1').text('Unable to update Trade')
+                $('#toast-alert').removeClass().addClass('toast align-items-center bg-danger text-danger')
+                toastList.forEach(toast => toast.show());
+                setTimeout(() => {
+                    toastList.forEach(toast => toast.hide());
+                }, 3000);
             }
 
             $('#update_trade_submit').removeClass().addClass('btn btn-outline-light d-none')
@@ -209,7 +267,13 @@ const view_trade = () => {
         exit_ts = Date.now() / 1000
     } else {
         if ($('#Entry_date').val() == "" || $('#Exit_date').val() == "") {
-            alert("Please Enter all fields!");
+            // alert("Please Enter all fields!");
+            $('.toast-body_1').text('Please Enter all fields!')
+            $('#toast-alert').removeClass().addClass('toast align-items-center bg-warning text-warning')
+            toastList.forEach(toast => toast.show());
+            setTimeout(() => {
+                toastList.forEach(toast => toast.hide());
+            }, 3000);
             return;
         } else {
             data_dict = {
@@ -235,10 +299,22 @@ const view_trade = () => {
                     dataTable_monthly()
                     $('#chart_and_table').show()
                 } else {
-                    alert('No Data / Empty Array');
+                    // alert('No Data / Empty Array');
+                    $('.toast-body_1').text('No Data / Empty Array')
+                    $('#toast-alert').removeClass().addClass('toast align-items-center bg-danger text-danger')
+                    toastList.forEach(toast => toast.show());
+                    setTimeout(() => {
+                        toastList.forEach(toast => toast.hide());
+                    }, 3000);
                 }
             } else {
-                alert("Error");
+                // alert("Error");
+                $('.toast-body_1').text('Error')
+                $('#toast-alert').removeClass().addClass('toast align-items-center bg-danger text-danger')
+                toastList.forEach(toast => toast.show());
+                setTimeout(() => {
+                    toastList.forEach(toast => toast.hide());
+                }, 3000);
             }
         }
     ).fail(function (response) {
@@ -586,7 +662,6 @@ const all_stats = () => {
 }
 
 const dataTable = () => {
-
     if (Array.isArray(view_trade_data)) {
         if (view_trade_data.length != 0) {
             data_table_array = []
@@ -843,36 +918,176 @@ function extractTimestamp(text) {
 //-------------Delete Trades------------------------
 const delete_trade = (trade_id) => {
 
-    console.log(trade_id)
+    delete_trade_id = trade_id
 
-    if (confirm("are you sure")) { } else { return; }
+    toastList1.forEach(toast1 => toast1.show());
+}
 
-    data_dict = {
-        'trade_id': trade_id
-    };
+const confirm_yes = () => {
+    Yes_button_Clicked = true
+    if (Yes_button_Clicked) {
+        Yes_button_Clicked = false
+        toastList1.forEach(toast1 => toast1.hide());
+        data_dict = {
+            'trade_id': delete_trade_id
+        };
 
-    data = JSON.stringify(data_dict);
+        data = JSON.stringify(data_dict);
 
-    $.post(
-        root + route + "/curd_journal",
-        { 'op': 'delete', 'data': data },
-        function (data, status) {
-            console.log(data, status)
-            if (data == "success") {
-                view_trade()
-                setTimeout(() => {
-                    alert("Trade deleted Successfully!");
-                }, 200);
-            } else {
-                alert("Unable to delete Trade");
+        $.post(
+            root + route + "/curd_journal",
+            { 'op': 'delete', 'data': data },
+            function (data, status) {
+                console.log(data, status)
+                if (data == "success") {
+                    view_trade()
+                    setTimeout(() => {
+                        // alert("Trade deleted Successfully!");
+                        $('.toast-body_1').text('Trade deleted Successfully!')
+                        $('#toast-alert').removeClass().addClass('toast align-items-center bg-success text-success')
+                        toastList.forEach(toast => toast.show());
+                        setTimeout(() => {
+                            toastList.forEach(toast => toast.hide());
+                        }, 3000);
+                    }, 200);
+                } else {
+                    // alert("Unable to delete Trade");
+                    $('.toast-body_1').text('Unable to delete Trade')
+                    $('#toast-alert').removeClass().addClass('toast align-items-center bg-danger text-danger')
+                    toastList.forEach(toast => toast.show());
+                    setTimeout(() => {
+                        toastList.forEach(toast => toast.hide());
+                    }, 3000);
+                }
             }
-        }
-    ).fail(function (response) {
-        console.log("Error: " + response);
-    });
+        ).fail(function (response) {
+            console.log("Error: " + response);
+        });
+    }
 }
 
 
+
+//-------------Delete Trades------------------------
+const winner_losser = () => {
+
+    const symbolReturns = {};
+
+    for (const entry1 of data_table_array) {
+        const [status, entryTime, exitTime, symbol, entry, exit, quantity, type, returnAmount, action] = entry1;
+
+        // Convert 'returnAmount' to a number
+        const numericReturn = parseFloat(returnAmount);
+
+        // If the symbol already exists in the dictionary, add to its return
+        if (symbolReturns.hasOwnProperty(symbol)) {
+            symbolReturns[symbol] += numericReturn;
+        } else {
+            // If the symbol doesn't exist, initialize its return
+            symbolReturns[symbol] = numericReturn;
+        }
+    }
+
+    console.log(symbolReturns);
+
+    const sortedSymbols = Object.keys(symbolReturns).sort((a, b) => symbolReturns[b] - symbolReturns[a]);
+
+    const Winner_losser_Dict = {
+        Winner_1: [sortedSymbols[0], symbolReturns[sortedSymbols[0]]],
+        Winner_2: [sortedSymbols[1], symbolReturns[sortedSymbols[1]]],
+        Winner_3: [sortedSymbols[2], symbolReturns[sortedSymbols[2]]],
+        Losser_1: [sortedSymbols[sortedSymbols.length - 1], symbolReturns[sortedSymbols[sortedSymbols.length - 1]]],
+        Losser_2: [sortedSymbols[sortedSymbols.length - 2], symbolReturns[sortedSymbols[sortedSymbols.length - 2]]],
+        Losser_3: [sortedSymbols[sortedSymbols.length - 3], symbolReturns[sortedSymbols[sortedSymbols.length - 3]]]
+    };
+
+    const winnersHaveNegativeReturn = Object.values(Winner_losser_Dict)
+        .slice(0, 3)
+        .some(([_, returnAmount]) => returnAmount < 0);
+
+    const losersHavePositiveReturn = Object.values(Winner_losser_Dict)
+        .slice(3)
+        .some(([_, returnAmount]) => returnAmount > 0);
+
+    // Update Winner_losser_Dict based on conditions
+    if (winnersHaveNegativeReturn) {
+        if (Winner_losser_Dict.Winner_1[1] < 0) Winner_losser_Dict.Winner_1 = ['', ''];
+        if (Winner_losser_Dict.Winner_2[1] < 0) Winner_losser_Dict.Winner_2 = ['', ''];
+        if (Winner_losser_Dict.Winner_3[1] < 0) Winner_losser_Dict.Winner_3 = ['', ''];
+    }
+
+    if (losersHavePositiveReturn) {
+        if (Winner_losser_Dict.Losser_1[1] > 0) Winner_losser_Dict.Losser_1 = ['', ''];
+        if (Winner_losser_Dict.Losser_2[1] > 0) Winner_losser_Dict.Losser_2 = ['', ''];
+        if (Winner_losser_Dict.Losser_3[1] > 0) Winner_losser_Dict.Losser_3 = ['', ''];
+    }
+
+    console.log(Winner_losser_Dict);
+
+    function formatCurrency(value) {
+        var floatValue = parseFloat(value);
+        var symbol = floatValue >= 0 ? '₹' : '- ₹';
+        floatValue = Math.abs(floatValue);
+        var formattedValue = '';
+
+        if (floatValue >= 10000000) {
+            formattedValue = (floatValue / 10000000).toFixed(2) + 'Cr';
+        } else if (floatValue >= 100000) {
+            formattedValue = (floatValue / 100000).toFixed(2) + 'L';
+        } else if (floatValue >= 1000) {
+            formattedValue = (floatValue / 1000).toFixed(2) + 'k';
+        } else {
+            formattedValue = floatValue.toFixed(2);
+        }
+
+        var oldValueWithSymbol = value >= 0 ? '₹' + floatValue.toFixed(2) : '- ₹' + floatValue.toFixed(2);
+
+        return [symbol + formattedValue, value, symbol + formattedValue, oldValueWithSymbol];
+    }
+
+    // Update Winners and Lossers with formatted amounts
+    for (let i = 1; i <= 3; i++) {
+        if (Winner_losser_Dict[`Winner_${i}`][1] !== '') {
+            const formattedWinner = formatCurrency(Winner_losser_Dict[`Winner_${i}`][1]);
+            Winner_losser_Dict[`Winner_${i}`][2] = formattedWinner[0];
+            Winner_losser_Dict[`Winner_${i}`][3] = formattedWinner[2];
+            Winner_losser_Dict[`Winner_${i}`][4] = formattedWinner[3];
+        }
+
+        if (Winner_losser_Dict[`Losser_${i}`][1] !== '') {
+            const formattedLosser = formatCurrency(Winner_losser_Dict[`Losser_${i}`][1]);
+            Winner_losser_Dict[`Losser_${i}`][2] = formattedLosser[0];
+            Winner_losser_Dict[`Losser_${i}`][3] = formattedLosser[2];
+            Winner_losser_Dict[`Losser_${i}`][4] = formattedLosser[3];
+        }
+    }
+
+    console.log(Winner_losser_Dict);
+
+    function updateNameAndValue(idPrefix, index, data) {
+        const nameId = `#${idPrefix}_${index}_Name`;
+        const valueId = `#${idPrefix}_${index}_Value`;
+
+        if ($(nameId).length && data[0] !== '') {
+            $(nameId).text(data[0]);
+        }
+
+        if ($(valueId).length && data[1] !== '') {
+            $(valueId).text(data[2]);
+            $(valueId).attr('title', data[4]);
+        }
+    }
+
+    // Update Winners
+    updateNameAndValue('Top_Winner', 1, Winner_losser_Dict.Winner_1);
+    updateNameAndValue('Top_Winner', 2, Winner_losser_Dict.Winner_2);
+    updateNameAndValue('Top_Winner', 3, Winner_losser_Dict.Winner_3);
+
+    // Update Lossers
+    updateNameAndValue('Top_Losser', 1, Winner_losser_Dict.Losser_1);
+    updateNameAndValue('Top_Losser', 2, Winner_losser_Dict.Losser_2);
+    updateNameAndValue('Top_Losser', 3, Winner_losser_Dict.Losser_3);
+}
 
 
 
@@ -974,8 +1189,27 @@ $(document).ready(function () {
     counter_for_data_table = 0
     counter_for_data_table_monthly = 0
 
+    Yes_button_Clicked = false
+
+    // -------- For Tooltip
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
+
+    // -------- For Alerts
+    const toastElList = document.querySelectorAll('#toast-alert')
+    const toastoptions = {
+        animation: true,
+        delay: 5000 // This is just an example, you can adjust the delay as needed
+    };
+    toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, toastoptions))
+
+    // -------- For Confirm
+    const toastElList1 = document.querySelectorAll('#toast-delete')
+    const toastoptions1 = {
+        animation: true,
+        delay: 10000
+    };
+    toastList1 = [...toastElList1].map(toastEl1 => new bootstrap.Toast(toastEl1, toastoptions1))
 
     // Set default values for entry and exit date fields
     const entryDate = new Date();
@@ -1309,6 +1543,47 @@ $(document).on("click", ".ch-day", function () {
             data_table.clear();
             data_table.rows.add(data_table_array);
             data_table.draw();
+
+            filtered_x_axis1 = [];
+            filtered_y_axis1 = [];
+            for (let i = 0; i < x_axis1.length; i++) {
+                const date = new Date(x_axis1[i]);
+                const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Adding 1 to get the correct month value
+
+                if (month === current_click_month) {
+                    filtered_x_axis1.push(x_axis1[i]);
+                    filtered_y_axis1.push(y_axis1[i]);
+                }
+            }
+            apexchart_Daily_PnL.updateOptions({
+                xaxis: {
+                    type: 'Text',
+                    categories: filtered_x_axis1,
+                }
+            })
+            apexchart_Daily_PnL.updateSeries([{
+                data: filtered_y_axis1
+            }])
+
+            filtered_x_axis = [];
+            filtered_y_axis = [];
+            var sum = 0;
+            var cumulativeArray = [];
+            for (var i = 0; i < filtered_y_axis1.length; i++) {
+                sum += filtered_y_axis1[i];
+                cumulativeArray.push(sum);
+            }
+            filtered_x_axis = filtered_x_axis1
+            filtered_y_axis = cumulativeArray
+
+            function addData(chart) {
+                chart.data.labels = filtered_x_axis;
+                chart.data.datasets.forEach((dataset) => {
+                    dataset.data = filtered_y_axis;
+                });
+                chart.update();
+            }
+            addData(chart_1);
         }
     }
 });
@@ -1503,7 +1778,24 @@ $(document).on("click", ".data_Table_1", () => {
 })
 
 $(document).on("click", ".bar_chart", () => {
+    function addData(chart) {
+        chart.data.labels = x_axis;
+        chart.data.datasets.forEach((dataset) => {
+            dataset.data = y_axis;
+        });
+        chart.update();
+    }
+    addData(chart_1);
 
+    apexchart_Daily_PnL.updateOptions({
+        xaxis: {
+            type: 'Text',
+            categories: x_axis1,
+        }
+    })
+    apexchart_Daily_PnL.updateSeries([{
+        data: y_axis1
+    }])
 })
 
 
