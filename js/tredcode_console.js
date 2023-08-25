@@ -298,6 +298,7 @@ const view_trade = () => {
                     dataTable()
                     dataTable_monthly()
                     $('#chart_and_table').show()
+                    winner_losser()
                 } else {
                     // alert('No Data / Empty Array');
                     $('.toast-body_1').text('No Data / Empty Array')
