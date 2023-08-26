@@ -509,12 +509,12 @@
                     if (obj) {
                         // console.log(obj)
                         if (obj.count >= 0) {
-                            var title = "₹" + obj.count + ", ";
+                            var title = "₹" + obj.count + "\n";
                         } else {
-                            var title = "-₹" + Math.abs(obj.count) + ", ";
+                            var title = "-₹" + Math.abs(obj.count) + "\n";
                         }
-                        title += this._dateFormat(obj.date, "DD-MM-YY");
-                        title += ', ' + obj.no_of_trades + ' trades';
+                        title += this._dateFormat(obj.date, "DD-MM-YY") + "\n";
+                        title += obj.no_of_trades + ' trades';
 
                         var color = "";
 
@@ -527,6 +527,8 @@
                             "data-title": title,
                             "data-bs-toggle": "tooltip",
                             "data-val": obj.count,
+                            "html": "true"
+                            // "html": "&#820   3;"
                         }).appendTo(
                             $(".ch-month:last .ch-weeks .ch-week:last", this.element)
                         )

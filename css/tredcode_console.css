@@ -636,7 +636,8 @@ table#Monthly_dataTable tr {
   color: #fff;
   background-color: #000;
   font-size: 12px !important;
-  white-space: nowrap;
+  /* white-space: nowrap; */
+  white-space: pre-line;
   border-radius: 5px;
   opacity: 0;
   z-index: 99999;
