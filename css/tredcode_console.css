@@ -352,6 +352,11 @@ input[type="radio"]:checked:after {
   background-color: #3caf39;
 }
 
+#exampleModal3 .modal-header,
+#exampleModal3 .modal-footer {
+  background-color: #fc5c5d;
+}
+
 .modal-lg {
   width: 600px !important;
 }
@@ -507,26 +512,21 @@ table#dataTable tr td:nth-child(4) {
 
 table#dataTable tr td:nth-child(1),
 table#dataTable tr td:nth-child(8),
-table#dataTable tr td:nth-child(10) {
+table#dataTable tr td:nth-child(11) {
   width: 75px !important;
 }
 
 @media (max-width: 1300px) {
-  table#dataTable tr td:nth-child(2),
-  table#dataTable tr td:nth-child(3),
-  table#dataTable tr td:nth-child(4) {
-    width: 120px !important;
-  }
-
   table#dataTable {
     font-size: 12px !important;
+    overflow-x: hidden !important;
   }
 }
 
 @media (max-width: 992px) {
   table#dataTable tr,
   table#Monthly_dataTable tr {
-    width: 1000px !important;
+    width: 1200px !important;
   }
 
   #monthly_breakup {
@@ -534,7 +534,7 @@ table#dataTable tr td:nth-child(10) {
   }
 }
 
-#Monthly_dataTable thead,
+/* #Monthly_dataTable thead,
 #Monthly_dataTable tbody {
   width: 100% !important;
   overflow-x: auto;
@@ -542,7 +542,7 @@ table#dataTable tr td:nth-child(10) {
 
 #Monthly_dataTable thead tr td,
 #Monthly_dataTable tbody tr td {
-  width: 60px !important;
+  width: 70px !important;
 }
 
 @media (max-width: 992px) {
@@ -550,7 +550,7 @@ table#dataTable tr td:nth-child(10) {
   #Monthly_dataTable tbody tr td {
     width: 72px !important;
   }
-}
+} */
 
 table#dataTable tr {
   border-radius: 10px !important;
@@ -609,7 +609,40 @@ table#Monthly_dataTable tr {
   border-top: 1px solid #712525 !important;
 }
 
-#exampleModal1 .btn-close {
+#delete_trade_submit {
+  background: #712525 !important;
+}
+
+/*------- Close Button - From Black to White --------- */
+#exampleModal1 .btn-close,
+#exampleModal3 .btn-close {
   --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") !important;
   --bs-btn-close-opacity: 1 !important;
+}
+
+/*--------- Custom Tooltip on hover ----------*/
+[data-title]:hover:after {
+  opacity: 1;
+  transition: all 0.1s ease 0.5s;
+  visibility: visible;
+}
+[data-title]:after {
+  content: attr(data-title);
+  position: absolute;
+  bottom: 75%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1px 5px 1px 5px;
+  color: #fff;
+  background-color: #000;
+  font-size: 12px !important;
+  white-space: nowrap;
+  border-radius: 5px;
+  opacity: 0;
+  z-index: 99999;
+  visibility: hidden;
+}
+[data-title] {
+  position: relative;
+  display: inline-block;
 }

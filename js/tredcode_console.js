@@ -283,6 +283,9 @@ const view_trade = () => {
         }
     }
 
+    exit_ts_month = parseInt(moment.unix(exit_ts).format('MM'))
+    exit_ts_year = parseInt(moment.unix(exit_ts).format('YYYY'))
+
     data = JSON.stringify(data_dict);
 
     $.post(
@@ -294,11 +297,7 @@ const view_trade = () => {
                 $('#view_trade_close').click()
                 if (view_trade_data.length != 0) {
 
-                    x_axis = []
-                    y_axis = []
-                
-                    x_axis1 = []
-                    y_axis1 = []
+                    empty_value()
 
                     print_view_data()
                     all_stats()
@@ -364,6 +363,10 @@ const print_view_data = () => {
     });
     resultArray = Object.values(resultMap);
 
+    $("#CalendarHeatmap").CalendarHeatmap('updateOptions', {
+        lastMonth: exit_ts_month,
+        lastYear: exit_ts_year,
+    });
     $("#CalendarHeatmap").CalendarHeatmap('updateDates', resultArray);
 
     count_Array = []
@@ -488,7 +491,7 @@ const print_view_data = () => {
 
     const chlvls = document.querySelectorAll('.ch-lvl');
     chlvls.forEach(day => {
-        day.setAttribute('title', '')
+        day.setAttribute('data-title', '')
     });
 
     resize_function()
@@ -660,14 +663,14 @@ const all_stats = () => {
     $('#biggest_loss1').text(result.Biggest_Loss[0])
     $('#avg_pnl').text(result.Average_pnl[0])
 
-    $('#total_profits').attr('title', result.Total_Profit[2])
-    $('#avg_winner').attr('title', result.Avg_Winner[2])
-    $('#avg_losser').attr('title', result.Avg_Losser[2])
-    $('#biggest_win').attr('title', result.Biggest_Winner[2])
-    $('#biggest_win1').attr('title', result.Biggest_Winner[2])
-    $('#biggest_loss').attr('title', result.Biggest_Loss[2])
-    $('#biggest_loss1').attr('title', result.Biggest_Loss[2])
-    $('#avg_pnl').attr('title', result.Average_pnl[2])
+    $('#total_profits').attr('data-title', result.Total_Profit[2])
+    $('#avg_winner').attr('data-title', result.Avg_Winner[2])
+    $('#avg_losser').attr('data-title', result.Avg_Losser[2])
+    $('#biggest_win').attr('data-title', result.Biggest_Winner[2])
+    $('#biggest_win1').attr('data-title', result.Biggest_Winner[2])
+    $('#biggest_loss').attr('data-title', result.Biggest_Loss[2])
+    $('#biggest_loss1').attr('data-title', result.Biggest_Loss[2])
+    $('#avg_pnl').attr('data-title', result.Average_pnl[2])
 
     $('#total_trades').text(result.Total_Trades)
     $('#risk_reward').text('1:' + Math.abs(parseFloat(parseFloat(result.Avg_Winner[1]).toFixed(2) / parseFloat(result.Avg_Losser[1]).toFixed(2)).toFixed(2)))
@@ -693,8 +696,12 @@ const dataTable = () => {
                 parse_data = JSON.parse(view_trade_data[i][4])
                 if (parse_data['trade_type'] == 'Long') {
                     status1 = (parseFloat(parse_data['exit_price']) - parseFloat(parse_data['entry_price'])) * parseFloat(parse_data['quantity'])
+                    roc = (parseFloat(parse_data['exit_price']) - parseFloat(parse_data['entry_price'])) / parseFloat(parse_data['entry_price']) * 100 * 1
+                    roc = parseFloat(roc.toFixed(2))
                 } else if (parse_data['trade_type'] == 'Short') {
                     status1 = (parseFloat(parse_data['entry_price']) - parseFloat(parse_data['exit_price'])) * parseFloat(parse_data['quantity'])
+                    roc = (parseFloat(parse_data['exit_price']) - parseFloat(parse_data['entry_price'])) / parseFloat(parse_data['entry_price']) * 100 * (-1)
+                    roc = parseFloat(roc.toFixed(2))
                 }
 
                 if (parseFloat(status1).toFixed(2) >= 0) {
@@ -708,7 +715,8 @@ const dataTable = () => {
                         parse_data['quantity'],
                         parse_data['trade_type'],
                         status1,
-                        `<i class="fa-solid fa-trash" onclick="delete_trade(${view_trade_data[i][0]})" style="cursor:pointer"></i>&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-pen-to-square" onclick='update_trade(${view_trade_data[i][0]}, ${view_trade_data[i][2]}, ${view_trade_data[i][3]}, ${view_trade_data[i][4]})' style="cursor:pointer"></i>`
+                        roc,
+                        `<i class="fa-solid fa-trash Modal_Open" data-bs-toggle="modal" data-bs-target="#exampleModal3" onclick="delete_trade(${view_trade_data[i][0]})" style="cursor:pointer"></i>&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-pen-to-square" onclick='update_trade(${view_trade_data[i][0]}, ${view_trade_data[i][2]}, ${view_trade_data[i][3]}, ${view_trade_data[i][4]})' style="cursor:pointer"></i>`
                     ])
                 } else {
                     data_table_array.push([
@@ -721,7 +729,8 @@ const dataTable = () => {
                         parse_data['quantity'],
                         parse_data['trade_type'],
                         status1,
-                        `<i class="fa-solid fa-trash" onclick="delete_trade(${view_trade_data[i][0]})" style="cursor:pointer"></i>&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-pen-to-square" onclick='update_trade(${view_trade_data[i][0]}, ${view_trade_data[i][2]}, ${view_trade_data[i][3]}, ${view_trade_data[i][4]})' style="cursor:pointer"></i>`
+                        roc,
+                        `<i class="fa-solid fa-trash Modal_Open" data-bs-toggle="modal" data-bs-target="#exampleModal3" onclick="delete_trade(${view_trade_data[i][0]})" style="cursor:pointer"></i>&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-pen-to-square" onclick='update_trade(${view_trade_data[i][0]}, ${view_trade_data[i][2]}, ${view_trade_data[i][3]}, ${view_trade_data[i][4]})' style="cursor:pointer"></i>`
                     ])
                 }
             }
@@ -731,7 +740,7 @@ const dataTable = () => {
                 data_table = $("#dataTable").DataTable({
                     data: data_table_array,
                     columnDefs: [
-                        { targets: [0, 1, 2, 3, 4, 5, 6, 7, 8], className: "dt-body-start" },
+                        { targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], className: "dt-body-start" },
                     ],
                     fnRowCallback: function (nRow, aData) {
                         if (aData[0] == 'WIN') {
@@ -750,6 +759,12 @@ const dataTable = () => {
                             $("td:eq(8)", nRow).html("<div class='px-1 py-1' style='color:#7BDB7B'>₹" + aData[8] + "</div>");
                         } else {
                             $("td:eq(8)", nRow).html("<div class='px-1 py-1' style='color:#FC5C5D'>- ₹" + Math.abs(aData[8]) + "</div>");
+                        }
+
+                        if (aData[9] >= 0) {
+                            $("td:eq(9)", nRow).html("<div class='px-1 py-1' style='color:#7BDB7B'>" + aData[9] + "%</div>");
+                        } else {
+                            $("td:eq(9)", nRow).html("<div class='px-1 py-1' style='color:#FC5C5D'>- " + Math.abs(aData[9]) + "%</div>");
                         }
 
                         $("td:eq(3)", nRow).html("<div class='px-1 py-1' style='color:#ffbd5a'>" + aData[3] + "</div>");
@@ -890,7 +905,7 @@ const dataTable_monthly = () => {
 }
 
 
-
+/*-------------- ALL HELPER FUNCTION - START ---------------*/
 
 // All array value are +ve, -ve or mix
 function checkArrayValues(arr) {
@@ -929,31 +944,70 @@ function calculateSubranges(min, max, numSubranges) {
 }
 
 function extractTimestamp(text) {
-    const datePattern = /([A-Za-z]{3} \d{1,2}, \d{4})/;
+    const datePattern = /(\d{2}-\d{2}-\d{2})/; // Updated regex pattern for "DD-MM-YY"
     const match = text.match(datePattern);
     if (match) {
         const dateString = match[1];
-        const date = new Date(dateString);
+
+        const [day, month, year] = dateString.split("-");
+
+        const date = new Date(`20${year}`, parseInt(month) - 1, day);
+
         const timestamp = date.getTime() / 1000;
         return timestamp;
     }
     return null;
 }
 
+function empty_value() {
+    x_axis = []
+    y_axis = []
+
+    x_axis1 = []
+    y_axis1 = []
+
+    $('#All_stats_Entry_date').text('')
+    $('#All_stats_Exit_date').text('')
+
+    $('#total_profits').text('')
+    $('#avg_winner').text('')
+    $('#avg_losser').text('')
+    $('#biggest_win').text('')
+    $('#biggest_win1').text('')
+    $('#biggest_loss').text('')
+    $('#biggest_loss1').text('')
+    $('#avg_pnl').text('')
+    $('#total_trades').text('')
+    $('#risk_reward').text('')
+
+    $('#Top_Winner_1_Name').text('Winner 1')
+    $('#Top_Winner_1_Value').text('-------')
+    $('#Top_Winner_2_Name').text('Winner 1')
+    $('#Top_Winner_2_Value').text('-------')
+    $('#Top_Winner_3_Name').text('Winner 1')
+    $('#Top_Winner_3_Value').text('-------')
+
+    $('#Top_Losser_1_Name').text('Losser 1')
+    $('#Top_Losser_1_Value').text('-------')
+    $('#Top_Losser_2_Name').text('Losser 2')
+    $('#Top_Losser_2_Value').text('-------')
+    $('#Top_Losser_3_Name').text('Losser 3')
+    $('#Top_Losser_3_Value').text('-------')
+}
+
+/*-------------- ALL HELPER FUNCTION - END ---------------*/
+
 
 //-------------Delete Trades------------------------
 const delete_trade = (trade_id) => {
 
     delete_trade_id = trade_id
-
-    toastList1.forEach(toast1 => toast1.show());
 }
 
 const confirm_yes = () => {
     Yes_button_Clicked = true
     if (Yes_button_Clicked) {
         Yes_button_Clicked = false
-        toastList1.forEach(toast1 => toast1.hide());
         data_dict = {
             'trade_id': delete_trade_id
         };
@@ -964,6 +1018,7 @@ const confirm_yes = () => {
             root + route + "/curd_journal",
             { 'op': 'delete', 'data': data },
             function (data, status) {
+                $('#delete_trade_close').click()
                 console.log(data, status)
                 if (data == "success") {
                     view_trade()
@@ -1100,7 +1155,7 @@ const winner_losser = () => {
 
         if ($(valueId).length && data[1] !== '') {
             $(valueId).text(data[2]);
-            $(valueId).attr('title', data[4]);
+            $(valueId).attr('data-title', data[4]);
         }
     }
 
@@ -1205,6 +1260,7 @@ $(document).ready(function () {
     // console.log = function () { }
 
     previous_timestamp = 0
+    scrollPosition = 0;
 
     x_axis = []
     y_axis = []
@@ -1228,14 +1284,6 @@ $(document).ready(function () {
         delay: 5000 // This is just an example, you can adjust the delay as needed
     };
     toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, toastoptions))
-
-    // -------- For Confirm
-    const toastElList1 = document.querySelectorAll('#toast-delete')
-    const toastoptions1 = {
-        animation: true,
-        delay: 10000
-    };
-    toastList1 = [...toastElList1].map(toastEl1 => new bootstrap.Toast(toastEl1, toastoptions1))
 
     // Set default values for entry and exit date fields
     const entryDate = new Date();
@@ -1334,7 +1382,7 @@ $(document).ready(function () {
             },
             plugins: {
                 tooltip: {
-                    mode: 'interpolate',
+                    mode: 'index',
                     intersect: false,
                     enabled: true,
                     displayColors: false,
@@ -1528,6 +1576,8 @@ $(document).ready(function () {
     $("#CalendarHeatmap").CalendarHeatmap([], {
         title: "Tradebook",
         months: 12,
+        lastMonth: moment().month() + 1,
+        lastYear: moment().year(),
         labels: {
             days: true,
             custom: {
@@ -1557,9 +1607,11 @@ $('.modal').on('shown.bs.modal', function () {
 });
 
 $(document).on("click", ".ch-day", function () {
-    let text = $(this).attr('title')
+    let text = $(this).attr('data-title')
     const output1 = extractTimestamp(text)
     if (previous_timestamp != 0) {
+
+        console.log('u r inside')
 
         current_click_month = moment.unix(output1).format('MM')
         previous_click_month = moment.unix(previous_timestamp).format('MM')
@@ -1917,4 +1969,51 @@ document.querySelector("#equity_curve").addEventListener("click", () => {
 
     $('#show_hide_chart').removeClass()
     $('#show_hide_apexchart').removeClass().addClass('d-none')
+});
+
+//---------- Intersection Observer - MODAL CLOSE - (page will not go back to top)
+$(document).on("click", ".Modal_Open", function () {
+    scrollPosition = window.scrollY;
+});
+
+//------ Close the modal and restore scroll position
+$(document).on("click", ".close_modal", function () {
+    setTimeout(() => {
+        window.scrollTo(0, scrollPosition);
+    }, 350);
+});
+
+//-------- User won't able to select sat/sun & Time between 9:15 - 15:30 only
+document.addEventListener("DOMContentLoaded", function () {
+    const dateTimeInput = document.getElementById("Entry_date_time");
+
+    dateTimeInput.addEventListener("input", function () {
+        const selectedDate = new Date(dateTimeInput.value);
+        const dayOfWeek = selectedDate.getDay();
+        const selectedTime = selectedDate.getHours() * 100 + selectedDate.getMinutes();
+
+        // Check if the selected day is Saturday (6) or Sunday (0)
+        if (dayOfWeek === 6 || dayOfWeek === 0) {
+            // alert("Please select a weekday (Monday to Friday).");
+            $('.toast-body_1').text('Please select a weekday (Monday to Friday)')
+            $('#toast-alert').removeClass().addClass('toast align-items-center bg-warning text-warning')
+            toastList.forEach(toast => toast.show());
+            setTimeout(() => {
+                toastList.forEach(toast => toast.hide());
+            }, 3000);
+            dateTimeInput.value = ""; // Clear the input value
+        }
+
+        // Check if the selected time is outside the range 9:15 to 15:30
+        else if (selectedTime < 915 || selectedTime > 1530) {
+            // alert("Please select a time between 9:15 AM and 3:30 PM.");
+            $('.toast-body_1').text('Please select a time between 9:15 and 15:30.')
+            $('#toast-alert').removeClass().addClass('toast align-items-center bg-warning text-warning')
+            toastList.forEach(toast => toast.show());
+            setTimeout(() => {
+                toastList.forEach(toast => toast.hide());
+            }, 3000);
+            dateTimeInput.value = ""; // Clear the input value
+        }
+    });
 });

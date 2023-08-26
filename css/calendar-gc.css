@@ -284,3 +284,7 @@
 .prev,.next {
   display: none !important;
 }
+
+.day.current-month.event {
+  border-radius: 8px !important;
+}

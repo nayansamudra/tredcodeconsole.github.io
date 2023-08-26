@@ -501,15 +501,15 @@
                     var str = year + "-" + this._pad((month + 1), 2);
                     str += "-" + this._pad((j + 1), 2);
                     var obj = this._matchDate(events, str);
-                    
+
                     var future = "";
                     if (this._futureDate(str)) {
                         future = " is-after-today";
                     }
                     if (obj) {
                         // console.log(obj)
-                        if(obj.count >= 0) {
-                            var title = "₹" + obj.count + " on ";
+                        if (obj.count >= 0) {
+                            var title = "₹" + obj.count + ", ";
                         } else {
                             var title = "-₹" + Math.abs(obj.count) + ", ";
                         }
@@ -524,12 +524,12 @@
 
                         $("<div/>", {
                             "class": "ch-day lvl-" + obj.level + color,
-                            "title": title,
-                            "data-toggle": "tooltip",
-                            "data-val": obj.count
+                            "data-title": title,
+                            "data-bs-toggle": "tooltip",
+                            "data-val": obj.count,
                         }).appendTo(
                             $(".ch-month:last .ch-weeks .ch-week:last", this.element)
-                        );
+                        )
 
                     } else {
                         $("<div/>", {
@@ -589,7 +589,7 @@
                 for (i = 0; i < binLabels.length; i++) {
                     $("<li>", {
                         "class": "ch-lvl lvl-" + i,
-                        "title": binLabels[i],
+                        "data-title": binLabels[i],
                         "data-toggle": "tooltip"
                     })
                         .appendTo($(".ch-lvls", this.element));

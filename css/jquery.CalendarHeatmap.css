@@ -117,14 +117,14 @@
 .ch-lvl:hover {
   border-color: #ababab;
 }
-.ch-day + .green-0:hover,
+/* .ch-day + .green-0:hover,
 .ch-day + .green-1:hover,
 .ch-day + .green-2:hover,
 .ch-day + .green-3:hover,
 .ch-day + .green-4:hover,
 .ch-day + .green-5:hover {
   transform: scale(1.5) !important;
-}
+} */
 
 .ch-legend {
   padding-top: 10px;
